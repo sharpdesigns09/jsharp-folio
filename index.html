@@ -146,11 +146,11 @@
     .project-row:hover { background:var(--surface); }
     .pr-inner {
       display:grid;
-      grid-template-columns:var(--gutter) 4.5rem 1fr auto var(--gutter);
+      grid-template-columns:var(--gutter) 7rem 1fr auto var(--gutter);
       align-items:center; gap:2.5rem; padding:2rem 0;
     }
     .pr-num { font-family:var(--mono); font-size:.72rem; color:var(--dim); letter-spacing:.1em; }
-    .pr-thumb { width:72px; height:52px; object-fit:cover; border:1px solid var(--border); filter:grayscale(25%); transition:filter .3s; flex-shrink:0; }
+    .pr-thumb { width:112px; height:80px; object-fit:cover; border:1px solid var(--border); filter:grayscale(25%); transition:filter .3s; flex-shrink:0; }
     .project-row:hover .pr-thumb { filter:grayscale(0%); }
     .pr-info { display:flex; flex-direction:column; gap:.35rem; min-width:0; }
     .pr-title { font-family:var(--serif); font-size:clamp(1.1rem,2vw,1.75rem); font-weight:400; color:var(--white); transition:color .2s; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
@@ -192,13 +192,10 @@
     }
     .cv-btn:hover { background:var(--white); transform:translateY(-2px); }
     .cv-btn svg { width:13px; height:13px; }
-    .cv-mock { border:1px solid var(--border); background:var(--surface); aspect-ratio:8.5/11; padding:2.5rem; position:relative; overflow:hidden; }
-    .cv-mock::before { content:''; position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:28px 28px; opacity:.12; }
-    .cv-lines { position:relative; display:flex; flex-direction:column; }
-    .cl { height:1px; background:var(--border); margin-bottom:.9rem; }
-    .cl.h { height:2px; background:var(--accent); width:38%; margin-bottom:.4rem; }
-    .cl.m { width:68%; } .cl.s { width:28%; } .cl.t { width:52%; background:var(--muted); }
-    .cv-mock-lbl { position:absolute; bottom:1.25rem; right:1.25rem; font-family:var(--mono); font-size:.65rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); }
+    .cv-mock { border:1px solid var(--border); background:var(--surface); aspect-ratio:8.5/11; position:relative; overflow:hidden; }
+    .cv-mock::before { content:''; position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:28px 28px; opacity:.12; pointer-events:none; z-index:1; }
+    .cv-iframe { position:absolute; inset:0; width:100%; height:100%; border:none; display:block; }
+    .cv-mock-lbl { position:absolute; bottom:1.25rem; right:1.25rem; font-family:var(--mono); font-size:.65rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); z-index:2; pointer-events:none; }
 
     /* ── CONTACT ────────────────────────────────────────────── */
     #contact { padding:var(--gap) var(--gutter); border-top:1px solid var(--border); text-align:center; position:relative; overflow:hidden; }
@@ -239,14 +236,19 @@
     @media(max-width:768px){
       #about,#cv { grid-template-columns:1fr; gap:3rem; }
       .form-row { grid-template-columns:1fr; }
-      .pr-inner { grid-template-columns:2.5rem 1fr auto; gap:1.25rem; }
-      .pr-thumb { display:none; }
+      .pr-inner { grid-template-columns:2.5rem 5rem 1fr auto; gap:1rem; padding:1.25rem 0; }
+      .pr-thumb { width:80px; height:58px; display:block; }
       .nav-links { display:none; }
       .skills-grid { grid-template-columns:1fr; }
       .sk:nth-child(odd) { border-right:none; padding-right:0; }
       .sk:nth-child(even) { padding-left:0; }
       .pr-detail-inner { grid-template-columns:1fr; gap:2rem; }
       .pr-detail-imgs { grid-template-columns:1fr; }
+    }
+    @media(hover:none){
+      body { cursor:auto; }
+      #cur, #curR { display:none; }
+      a, button, .project-row, .filter-btn, .contact-email { cursor:pointer; }
     }
   </style>
 </head>
@@ -496,19 +498,7 @@
     </a>
   </div>
   <div class="cv-mock reveal">
-    <div class="cv-lines">
-      <div class="cl h"></div><div class="cl s" style="margin-bottom:1.75rem"></div>
-      <div class="cl m"></div><div class="cl t"></div><div class="cl m"></div>
-      <div class="cl" style="margin-top:.9rem"></div>
-      <div class="cl h"></div><div class="cl s" style="margin-bottom:.9rem"></div>
-      <div class="cl t"></div><div class="cl m"></div><div class="cl t"></div>
-      <div class="cl" style="margin-top:.9rem"></div>
-      <div class="cl h"></div><div class="cl s" style="margin-bottom:.9rem"></div>
-      <div class="cl m"></div><div class="cl t"></div><div class="cl m"></div><div class="cl t"></div>
-      <div class="cl" style="margin-top:.9rem"></div>
-      <div class="cl h"></div><div class="cl s" style="margin-bottom:.9rem"></div>
-      <div class="cl t"></div><div class="cl m"></div>
-    </div>
+    <iframe src="cv.pdf" class="cv-iframe" title="CV Preview"></iframe>
     <div class="cv-mock-lbl">CV Preview</div>
   </div>
 </section>
@@ -526,12 +516,15 @@
     <li><a href="https://www.youtube.com/@sharpdesigns09/playlists" target="_blank">YouTube</a></li>
   </ul>
   <form class="contact-form" onsubmit="handleForm(event)">
+    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+    <input type="hidden" name="subject" value="New message from jdsharp.org" />
+    <input type="hidden" name="from_name" value="JD Sharp Portfolio" />
     <div class="form-row">
-      <input type="text"  class="ff" placeholder="Name"  required />
-      <input type="email" class="ff" placeholder="Email" required />
+      <input type="text"  class="ff" name="name"    placeholder="Name"  required />
+      <input type="email" class="ff" name="email"   placeholder="Email" required />
     </div>
-    <input type="text" class="ff" placeholder="Subject" style="display:block;width:100%;margin-bottom:1px;" />
-    <textarea class="ff" placeholder="Message" style="display:block;width:100%;"></textarea>
+    <input type="text" class="ff" name="subject_line" placeholder="Subject" style="display:block;width:100%;margin-bottom:1px;" />
+    <textarea class="ff" name="message" placeholder="Message" style="display:block;width:100%;"></textarea>
     <button type="submit" class="fsub">Send Message →</button>
   </form>
 </section>
@@ -600,11 +593,40 @@
   });
 
   /* ── FORM ── */
-  function handleForm(e){
+  async function handleForm(e){
     e.preventDefault();
-    const btn=e.target.querySelector('.fsub');
-    btn.textContent='Sent ✓';btn.style.borderColor='var(--accent2)';btn.style.color='var(--accent2)';
-    setTimeout(()=>{btn.textContent='Send Message →';btn.style.borderColor='';btn.style.color='';e.target.reset();},3000);
+    const form = e.target;
+    const btn = form.querySelector('.fsub');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const data = Object.fromEntries(new FormData(form));
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+      if (json.success) {
+        btn.textContent = 'Sent ✓';
+        btn.style.borderColor = 'var(--accent2)';
+        btn.style.color = 'var(--accent2)';
+        form.reset();
+        setTimeout(() => {
+          btn.textContent = 'Send Message →';
+          btn.style.borderColor = '';
+          btn.style.color = '';
+          btn.disabled = false;
+        }, 3000);
+      } else {
+        throw new Error(json.message);
+      }
+    } catch(err) {
+      btn.textContent = 'Error — try emailing directly';
+      btn.style.borderColor = '#e05';
+      btn.style.color = '#e05';
+      btn.disabled = false;
+    }
   }
 </script>
 </body>
