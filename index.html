@@ -52,31 +52,28 @@
 <link rel="preload" href="/fonts/playfair-display-latin-400-italic.woff2"  as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/ibm-plex-mono-latin-400-normal.woff2"     as="font" type="font/woff2" crossorigin />
 
-<!-- Font failsafe — if self-hosted files are missing or fail, silently
-     load Google Fonts in the background. Checks after fonts.ready resolves
-     and again at 4s as a hard timeout for slow or broken environments. -->
+<!-- Font failsafe — fires AFTER window load so @font-face rules are
+     fully parsed and self-hosted fonts have had time to load.
+     Only injects Google Fonts if a font is genuinely missing. -->
 <script>
 (function() {
   var GFONTS = 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap';
   function loadGoogleFonts() {
     if (document.querySelector('link[href*="fonts.googleapis.com"]')) return;
     var l = document.createElement('link');
-    l.rel = 'stylesheet';
-    l.href = GFONTS;
+    l.rel = 'stylesheet'; l.href = GFONTS;
     document.head.appendChild(l);
   }
-  // Primary check — fires when browser finishes processing all @font-face rules
-  document.fonts.ready.then(function() {
-    if (!document.fonts.check('400 1em "Playfair Display"') ||
-        !document.fonts.check('400 1em "IBM Plex Mono"')   ||
-        !document.fonts.check('300 1em "IBM Plex Sans"')) {
-      loadGoogleFonts();
-    }
+  window.addEventListener('load', function() {
+    // Extra 500ms buffer after load — fonts used on-screen will be ready by now
+    setTimeout(function() {
+      if (!document.fonts.check('400 1em "Playfair Display"') ||
+          !document.fonts.check('400 1em "IBM Plex Mono"')   ||
+          !document.fonts.check('300 1em "IBM Plex Sans"')) {
+        loadGoogleFonts();
+      }
+    }, 500);
   });
-  // Hard timeout — catches edge cases where fonts.ready is delayed
-  setTimeout(function() {
-    if (!document.fonts.check('400 1em "Playfair Display"')) loadGoogleFonts();
-  }, 4000);
 })();
 </script>
 
@@ -572,7 +569,7 @@ footer { border-top:1px solid var(--border); padding:1.75rem var(--gutter); disp
     <div class="pr-inner">
       <span class="pr-num" aria-hidden="true">01</span>
       <!-- FIX: explicit width/height prevents layout shift -->
-      <img class="pr-thumb" src="gi-assy.png" alt="GI Surgical Actuator CAD assembly" width="112" height="80" loading="lazy" decoding="async" />
+      <img class="pr-thumb" src="gi-assy-thumb.avif" alt="GI Surgical Actuator CAD assembly" width="112" height="80" loading="lazy" decoding="async" />
       <div class="pr-info">
         <span class="pr-title">Endoscopic GI Surgical Actuator — Med Device</span>
         <span class="pr-desc">Novel steerable actuator for endoscopic GI surgery, developed with UNC Hospital's Advanced Endoscopy Fellowship. Concept through working prototype, documented to FDA and ISO standards over three years.</span>
@@ -601,7 +598,7 @@ footer { border-top:1px solid var(--border); padding:1.75rem var(--gutter); disp
   <div class="project-row reveal" data-cats="mechanical operations" onclick="toggleDetail(this)">
     <div class="pr-inner">
       <span class="pr-num" aria-hidden="true">02</span>
-      <img class="pr-thumb" src="IMG_5677-1024x768.jpg" alt="Finished acrylic CNC safety shield" width="112" height="80" loading="lazy" decoding="async" />
+      <img class="pr-thumb" src="IMG_5677-thumb.avif" alt="Finished acrylic CNC safety shield" width="112" height="80" loading="lazy" decoding="async" />
       <div class="pr-info">
         <span class="pr-title">CNC Shielding — Wegstr PCB Mill</span>
         <span class="pr-desc">Custom acrylic enclosure designed &amp; fabricated for a department PCB mill. Illustrator layout, DCM solvent bonding, 3D-printed clamp fixtures.</span>
@@ -630,7 +627,7 @@ footer { border-top:1px solid var(--border); padding:1.75rem var(--gutter); disp
   <div class="project-row reveal" data-cats="illustration" onclick="toggleDetail(this)">
     <div class="pr-inner">
       <span class="pr-num" aria-hidden="true">03</span>
-      <img class="pr-thumb" src="Scan_20260117-64-1024x1024.avif" alt="Commissioned album cover illustration" width="112" height="80" loading="lazy" decoding="async" />
+      <img class="pr-thumb" src="Scan_20260117-thumb.avif" alt="Commissioned album cover illustration" width="112" height="80" loading="lazy" decoding="async" />
       <div class="pr-info">
         <span class="pr-title">Album Illustration — Commission</span>
         <span class="pr-desc">Album cover for Jose "MoneyBag$" Rios. Mexican heritage meets rap culture. Alcohol marker, micron pen, gel pen &amp; colored pencil on 11×14in paper. Shown at "Pancakes &amp; Booze."</span>
@@ -658,7 +655,7 @@ footer { border-top:1px solid var(--border); padding:1.75rem var(--gutter); disp
   <div class="project-row reveal" data-cats="digital operations" onclick="toggleDetail(this)">
     <div class="pr-inner">
       <span class="pr-num" aria-hidden="true">04</span>
-      <img class="pr-thumb" src="IMG_1007-scaled.avif" alt="DakBoard calendar display in 3D print lab" width="112" height="80" loading="lazy" decoding="async" />
+      <img class="pr-thumb" src="IMG_1007-thumb.avif" alt="DakBoard calendar display in 3D print lab" width="112" height="80" loading="lazy" decoding="async" />
       <div class="pr-info">
         <span class="pr-title">3D Printing Queue — UNC BME</span>
         <span class="pr-desc">Department-wide print management system: Google Forms → App Script → Calendar → DakBoard on Raspberry Pi. Took machine tracking from 0% to 40%+.</span>
@@ -687,7 +684,7 @@ footer { border-top:1px solid var(--border); padding:1.75rem var(--gutter); disp
   <div class="project-row reveal" data-cats="mechanical" onclick="toggleDetail(this)">
     <div class="pr-inner">
       <span class="pr-num" aria-hidden="true">05</span>
-      <img class="pr-thumb" src="IMG_1113-768x1024.avif" alt="Brass leadscrew adapter for z-axis manual override" width="112" height="80" loading="lazy" decoding="async" />
+      <img class="pr-thumb" src="IMG_1113-thumb.avif" alt="Brass leadscrew adapter for z-axis manual override" width="112" height="80" loading="lazy" decoding="async" />
       <div class="pr-info">
         <span class="pr-title">Z-axis Manual Override — Universal Laser</span>
         <span class="pr-desc">Brass leadscrew adapter machined on lathe and mill to manually raise a seized $50k laser cutter bed. Grub screws, spring pin, and a salvaged knob.</span>
