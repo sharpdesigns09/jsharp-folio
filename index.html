@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ═══════════════════════════════════════════════════════════
+     SEO — PRIMARY
+════════════════════════════════════════════════════════════ -->
+<title>J.D. Sharp — Biomedical Engineer · Medical Device Design</title>
+<meta name="description" content="Portfolio of J.D. Sharp, a biomedical engineer specializing in medical device design, CAD, rapid prototyping, and FDA regulatory strategy. Based in Chapel Hill, NC." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://jsharp-folio.pages.dev/" />
+
+<!-- ═══════════════════════════════════════════════════════════
+     SEO — OPEN GRAPH (Facebook / LinkedIn previews)
+════════════════════════════════════════════════════════════ -->
+<meta property="og:type"        content="website" />
+<meta property="og:url"         content="https://jsharp-folio.pages.dev/" />
+<meta property="og:title"       content="J.D. Sharp — Biomedical Engineer · Medical Device Design" />
+<meta property="og:description" content="Engineering at the intersection of clinical need and precision manufacturing — from concept sketches to FDA-ready prototypes." />
+<meta property="og:image"       content="https://jsharp-folio.pages.dev/gi-assy.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale"      content="en_US" />
+<meta property="og:site_name"   content="J.D. Sharp Portfolio" />
+
+<!-- ═══════════════════════════════════════════════════════════
+     SEO — TWITTER CARD
+════════════════════════════════════════════════════════════ -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="J.D. Sharp — Biomedical Engineer · Medical Device Design" />
+<meta name="twitter:description" content="Engineering at the intersection of clinical need and precision manufacturing — from concept sketches to FDA-ready prototypes." />
+<meta name="twitter:image"       content="https://jsharp-folio.pages.dev/gi-assy.png" />
+
+<!-- ═══════════════════════════════════════════════════════════
+     FAVICON — add a favicon.svg (or .ico) to the repo root
+════════════════════════════════════════════════════════════ -->
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- ═══════════════════════════════════════════════════════════
+     PERFORMANCE — GOOGLE FONTS (non-blocking async load)
+     Using the media/onload trick keeps fonts from blocking FCP.
+     The preconnects are retained for DNS prefetch.
+════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Preload the CSS so the browser fetches it at high priority -->
+<link rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'" />
+<!-- Fallback for browsers without JS -->
+<noscript>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" />
+</noscript>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STRUCTURED DATA — Person (JSON-LD)
+     Helps Google surface your name, role, and links in rich results.
+════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "J.D. Sharp",
+  "givenName": "Joseph",
+  "familyName": "Sharp",
+  "jobTitle": "Biomedical Engineer",
+  "description": "Biomedical engineer specializing in medical device design, rapid prototyping, CAD, and FDA regulatory strategy.",
+  "url": "https://jsharp-folio.pages.dev/",
+  "email": "jd@jdsharp.org",
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of North Carolina at Chapel Hill"
+  },
+  "knowsAbout": [
+    "Medical Device Design",
+    "SolidWorks",
+    "Fusion 360",
+    "Rapid Prototyping",
+    "FDA Regulatory Strategy",
+    "ISO 13485",
+    "Biocompatibility",
+    "Electromechanical Systems"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/j-d-sharp/",
+    "https://www.instagram.com/sharpdesigns09/",
+    "https://www.youtube.com/@sharpdesigns09/playlists"
+  ]
+}
+</script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0c0c0c;
+  --surface: #141414;
+  --surface2: #1a1a1a;
+  --border: #2a2a2a;
+  --muted: #444;
+  --dim: #777;
+  --mid: #aaa;
+  --text: #ede9e3;
+  --accent: #6AAFE0;
+  --accent2: #93C8EA;
+  --white: #f5f1eb;
+  --serif: 'Playfair Display', Georgia, serif;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --gap: clamp(5rem, 10vw, 10rem);
+  --gutter: clamp(1.5rem, 5vw, 5rem);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg); color: var(--text);
+  font-family: var(--sans); font-weight: 300; line-height: 1.75;
+  font-size: 18px;
+  overflow-x: hidden; cursor: none;
+}
+
+/* ── CURSOR ─────────────────────────────────────────────── */
+#cur { position:fixed; width:7px; height:7px; background:var(--accent); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform .15s; }
+#curR { position:fixed; width:30px; height:30px; border:1px solid rgba(75,156,211,.35); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width .3s,height .3s,border-color .3s; }
+
+/* ── NOISE ──────────────────────────────────────────────── */
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:8000; opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ────────────────────────────────────────────────── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.6rem var(--gutter);
+}
+nav::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to bottom,rgba(12,12,12,.97) 0%,transparent 100%);
+  pointer-events:none;
+}
+.nav-logo { font-family:var(--mono); font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:var(--text); text-decoration:none; position:relative; }
+.nav-logo span { color:var(--accent); }
+.nav-links { display:flex; gap:2.25rem; list-style:none; position:relative; }
+.nav-links a { font-family:var(--mono); font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--mid); text-decoration:none; transition:color .2s; }
+.nav-links a:hover { color:var(--accent); }
+.nav-links a.nav-active { color:var(--accent); }
+
+/* ── HERO ───────────────────────────────────────────────── */
+#hero {
+  min-height:100svh; display:grid; grid-template-rows:1fr auto;
+  padding:0 var(--gutter); padding-top:5.5rem;
+  position:relative; overflow:hidden;
+}
+.hero-content { display:flex; flex-direction:column; justify-content:flex-end; padding-bottom:4rem; }
+.hero-eyebrow {
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:2rem;
+  display:flex; align-items:center; gap:1rem; animation:fadeUp 1s .2s both;
+}
+.hero-eyebrow::before { content:''; width:2.5rem; height:1px; background:var(--accent); display:block; }
+
+h1.hero-name {
+  font-family:var(--serif); font-size:clamp(3.5rem,9vw,10rem);
+  font-weight:400; line-height:.93; letter-spacing:-.02em; color:var(--white);
+  margin-bottom:1.75rem; animation:fadeUp 1s .4s both;
+}
+h1.hero-name em { font-style:italic; color:var(--accent); }
+
+.hero-sub { max-width:38ch; font-size:1rem; color:var(--mid); line-height:1.85; margin-left:auto; text-align:right; animation:fadeUp 1s .6s both; }
+.hero-bar {
+  display:flex; justify-content:space-between; align-items:flex-end;
+  border-top:1px solid var(--border); padding-top:1.25rem; padding-bottom:1.75rem;
+  animation:fadeUp 1s .8s both;
+}
+.hero-scroll { font-family:var(--mono); font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:var(--dim); display:flex; align-items:center; gap:.75rem; }
+.hero-scroll::after { content:''; width:1px; height:3rem; background:var(--dim); animation:pulse 2s infinite; }
+.hero-ncount { font-family:var(--mono); font-size:.72rem; color:var(--dim); letter-spacing:.1em; }
+.hero-ghost {
+  position:absolute; right:-.04em; bottom:-.1em;
+  font-family:var(--serif); font-size:clamp(10rem,24vw,24rem);
+  font-weight:700; color:transparent; -webkit-text-stroke:1px var(--border);
+  pointer-events:none; user-select:none; line-height:1;
+}
+
+/* ── SECTION LABEL ──────────────────────────────────────── */
+.slabel { font-family:var(--mono); font-size:.76rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); display:flex; align-items:center; gap:.9rem; margin-bottom:2.5rem; }
+.slabel::before { content:''; width:2rem; height:1px; background:var(--accent); display:block; }
+
+/* ── ABOUT ──────────────────────────────────────────────── */
+#about { padding:var(--gap) var(--gutter); display:grid; grid-template-columns:1fr 1fr; gap:5rem; border-top:1px solid var(--border); }
+.about-h { font-family:var(--serif); font-size:clamp(2rem,3.8vw,3.8rem); font-weight:400; line-height:1.1; color:var(--white); margin-bottom:1.75rem; }
+.about-h em { font-style:italic; color:var(--accent); }
+.about-left p { font-size:1rem; color:var(--mid); line-height:1.9; margin-bottom:1.1rem; }
+.skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; align-content:start; }
+.sk { padding:1.25rem 0; border-top:1px solid var(--border); }
+.sk:nth-child(odd) { padding-right:1.75rem; border-right:1px solid var(--border); }
+.sk:nth-child(even) { padding-left:1.75rem; }
+.sk .n { font-family:var(--mono); font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); margin-bottom:.4rem; }
+.sk p { font-size:.95rem; color:var(--mid); line-height:1.55; }
+
+/* ── WORK ───────────────────────────────────────────────── */
+#work { padding:var(--gap) 0; border-top:1px solid var(--border); }
+.work-hdr { padding:0 var(--gutter); margin-bottom:3.5rem; display:flex; justify-content:space-between; align-items:flex-end; }
+.work-hdr h2 { font-family:var(--serif); font-size:clamp(1.8rem,3vw,3rem); font-weight:400; color:var(--white); }
+.work-hdr .wct { font-family:var(--mono); font-size:.75rem; color:var(--dim); letter-spacing:.1em; }
+
+/* Filter tabs */
+.filters { padding:0 var(--gutter); margin-bottom:2.5rem; display:flex; gap:.75rem; flex-wrap:wrap; }
+.filter-btn {
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--dim); border:1px solid var(--muted); background:transparent;
+  padding:.35rem .9rem; border-radius:100px; cursor:none; transition:all .2s;
+}
+.filter-btn:hover, .filter-btn.active { color:var(--accent); border-color:var(--accent); }
+
+/* Project rows */
+.project-row { border-top:1px solid var(--border); transition:background .35s; cursor:none; position:relative; overflow:hidden; }
+.project-row:last-child { border-bottom:1px solid var(--border); }
+.project-row:hover { background:var(--surface); }
+.pr-inner {
+  display:grid;
+  grid-template-columns:var(--gutter) 7rem 1fr auto var(--gutter);
+  align-items:center; gap:2.5rem; padding:2rem 0;
+}
+.pr-num { font-family:var(--mono); font-size:.72rem; color:var(--dim); letter-spacing:.1em; }
+/* FIX: explicit dimensions prevent layout shift (CLS) */
+.pr-thumb { width:112px; height:80px; object-fit:cover; border:1px solid var(--border); filter:grayscale(25%); transition:filter .3s; flex-shrink:0; }
+.project-row:hover .pr-thumb { filter:grayscale(0%); }
+.pr-info { display:flex; flex-direction:column; gap:.35rem; min-width:0; }
+.pr-title { font-family:var(--serif); font-size:clamp(1.1rem,2vw,1.75rem); font-weight:400; color:var(--white); transition:color .2s; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.project-row:hover .pr-title { color:var(--accent); }
+.pr-desc { font-size:.93rem; color:var(--mid); line-height:1.6; }
+.pr-tags { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.15rem; }
+.tag { font-family:var(--mono); font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); border:1px solid var(--muted); padding:.2rem .6rem; border-radius:100px; }
+.pr-arrow { font-size:1.1rem; color:var(--dim); transition:transform .3s,color .3s; }
+.project-row:hover .pr-arrow { color:var(--accent); }
+
+/* Expandable detail */
+.pr-detail { overflow:hidden; max-height:0; transition:max-height .6s cubic-bezier(.16,1,.3,1); }
+.pr-detail.open { max-height:2400px; border-top:1px solid var(--border); }
+.pr-detail-inner { padding:3rem var(--gutter); display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
+.pr-detail-text h3 { font-family:var(--serif); font-size:1.7rem; font-weight:400; color:var(--white); margin-bottom:1rem; }
+.pr-detail-text p { font-size:.97rem; color:var(--mid); line-height:1.9; margin-bottom:.9rem; }
+.pr-detail-text a.read-more {
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-family:var(--mono); font-size:.75rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent);
+  padding-bottom:.2rem; transition:color .2s; cursor:none; margin-top:.5rem;
+}
+.pr-detail-text a.read-more:hover { color:var(--white); border-color:var(--white); }
+.pr-detail-imgs { display:grid; grid-template-columns:1fr 1fr; gap:2px; align-content:start; }
+.pr-detail-imgs img { width:100%; aspect-ratio:4/3; object-fit:cover; filter:grayscale(15%); transition:filter .3s; }
+.pr-detail-imgs img:hover { filter:grayscale(0%); }
+.pr-detail-imgs img:first-child { grid-column:1/-1; aspect-ratio:16/9; }
+
+/* ── CV ─────────────────────────────────────────────────── */
+#cv { padding:var(--gap) var(--gutter); display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; border-top:1px solid var(--border); }
+#cv h2 { font-family:var(--serif); font-size:clamp(2rem,3.5vw,3.8rem); font-weight:400; color:var(--white); line-height:1.1; margin-bottom:1.5rem; }
+#cv h2 em { font-style:italic; color:var(--accent); }
+#cv p { font-size:1rem; color:var(--mid); line-height:1.9; margin-bottom:2.25rem; }
+.cv-btn {
+  display:inline-flex; align-items:center; gap:.9rem;
+  font-family:var(--mono); font-size:.76rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--bg); background:var(--accent); text-decoration:none;
+  padding:.95rem 2rem; transition:background .2s,transform .2s; cursor:none;
+}
+.cv-btn:hover { background:var(--white); transform:translateY(-2px); }
+.cv-btn svg { width:13px; height:13px; }
+.cv-mock { border:1px solid var(--border); background:var(--surface); aspect-ratio:8.5/11; position:relative; overflow:hidden; }
+.cv-mock::before { content:''; position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:28px 28px; opacity:.12; pointer-events:none; z-index:1; }
+/* FIX: lazy-load the PDF iframe — it's heavy and below the fold */
+.cv-iframe { position:absolute; inset:0; width:100%; height:100%; border:none; display:block; }
+.cv-mock-lbl { position:absolute; bottom:1.25rem; right:1.25rem; font-family:var(--mono); font-size:.65rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); z-index:2; pointer-events:none; }
+
+/* ── CONTACT ────────────────────────────────────────────── */
+#contact { padding:var(--gap) var(--gutter); border-top:1px solid var(--border); text-align:center; position:relative; overflow:hidden; }
+.contact-ghost { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-family:var(--serif); font-size:clamp(5rem,18vw,17rem); font-weight:700; color:transparent; -webkit-text-stroke:1px var(--border); pointer-events:none; user-select:none; white-space:nowrap; }
+#contact .slabel { justify-content:center; margin-bottom:2rem; }
+#contact .slabel::before { display:none; }
+#contact h2 { font-family:var(--serif); font-size:clamp(2.2rem,5.5vw,5.5rem); font-weight:400; color:var(--white); line-height:1.05; margin-bottom:1.5rem; position:relative; }
+#contact h2 em { font-style:italic; color:var(--accent); }
+#contact > p { font-size:1rem; color:var(--mid); margin-bottom:2.5rem; position:relative; }
+.contact-email { display:inline-block; font-family:var(--serif); font-size:clamp(1rem,2.2vw,1.8rem); color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:.2rem; transition:color .2s,border-color .2s; position:relative; cursor:none; }
+.contact-email:hover { color:var(--white); border-color:var(--white); }
+.contact-social { display:flex; justify-content:center; gap:1.75rem; margin-top:2.25rem; list-style:none; position:relative; }
+.contact-social a { font-family:var(--mono); font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); text-decoration:none; transition:color .2s; cursor:none; }
+.contact-social a:hover { color:var(--accent); }
+.contact-form { max-width:580px; margin:4rem auto 0; text-align:left; position:relative; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin-bottom:1px; }
+.ff { display:block; width:100%; background:var(--surface); border:none; border-bottom:1px solid var(--border); padding:1.15rem 1.4rem; font-family:var(--sans); font-size:.95rem; font-weight:300; color:var(--text); outline:none; transition:background .2s,border-color .2s; }
+.ff:focus { background:#1a1a1a; border-color:var(--accent); }
+.ff::placeholder { color:var(--dim); }
+textarea.ff { resize:none; min-height:130px; }
+.fsub { width:100%; background:transparent; border:1px solid var(--accent); color:var(--accent); font-family:var(--mono); font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; padding:1.15rem; margin-top:1px; cursor:none; transition:background .2s,color .2s; }
+.fsub:hover { background:var(--accent); color:var(--bg); }
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer { border-top:1px solid var(--border); padding:1.75rem var(--gutter); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+.copy { font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; color:var(--dim); }
+.foot-links { display:flex; gap:1.75rem; list-style:none; }
+.foot-links a { font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); text-decoration:none; transition:color .2s; }
+.foot-links a:hover { color:var(--accent); }
+
+/* ── ANIMATIONS ─────────────────────────────────────────── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1); }
+.reveal.vis { opacity:1; transform:none; }
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:768px){
+  #about,#cv { grid-template-columns:1fr; gap:3rem; }
+  .form-row { grid-template-columns:1fr; }
+  .pr-inner { grid-template-columns:2.5rem 5rem 1fr auto; gap:1rem; padding:1.25rem 0; }
+  .pr-thumb { width:80px; height:58px; display:block; }
+  .nav-links { display:none; }
+  .skills-grid { grid-template-columns:1fr; }
+  .sk:nth-child(odd) { border-right:none; padding-right:0; }
+  .sk:nth-child(even) { padding-left:0; }
+  .pr-detail-inner { grid-template-columns:1fr; gap:2rem; }
+  .pr-detail-imgs { grid-template-columns:1fr; }
+}
+@media(hover:none){
+  body { cursor:auto; }
+  #cur, #curR { display:none; }
+  a, button, .project-row, .filter-btn, .contact-email { cursor:pointer; }
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="curR"></div>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <a href="#hero" class="nav-logo">J<span>.</span>Sharp<span> /</span> BME</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-section="about">About</a></li>
+    <li><a href="#work"  data-section="work">Work</a></li>
+    <li><a href="#cv"    data-section="cv">CV</a></li>
+    <li><a href="#contact" data-section="contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" aria-label="Introduction">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Biomedical Engineer · Medical Device Design</div>
+    <h1 class="hero-name">
+      Design that<br>
+      <em>heals</em> &amp;<br>
+      performs.
+    </h1>
+    <p class="hero-sub">
+      Engineering at the intersection of clinical need and precision manufacturing — from concept sketches to FDA-ready prototypes.
+    </p>
+  </div>
+  <div class="hero-bar">
+    <div class="hero-scroll">Scroll</div>
+    <div class="hero-ncount">05 Projects</div>
+  </div>
+  <div class="hero-ghost" aria-hidden="true">BME</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" aria-label="About J.D. Sharp">
+  <div class="about-left reveal">
+    <div class="slabel">Profile</div>
+    <h2 class="about-h">Built for<br><em>precision.</em></h2>
+    <p>
+      I work at the intersection of biomedical engineering, industrial design, and regulatory science. My practice spans the full product development lifecycle — from user need identification through clinical validation and manufacturing transition.
+    </p>
+    <p>
+      My practice spans fifteen years of engineering leadership — from seed-stage startups to university research labs — always focused on getting ideas from whiteboard to manufacturable reality, faster.
+    </p>
+  </div>
+  <div class="reveal">
+    <div class="skills-grid">
+      <div class="sk"><div class="n">01</div><p>Concept Design &amp; Industrial Sketching</p></div>
+      <div class="sk"><div class="n">02</div><p>CAD / SolidWorks / Fusion 360</p></div>
+      <div class="sk"><div class="n">03</div><p>Rapid Prototyping &amp; DFM</p></div>
+      <div class="sk"><div class="n">04</div><p>Regulatory Strategy (FDA / ISO)</p></div>
+      <div class="sk"><div class="n">05</div><p>Biocompatibility &amp; Materials</p></div>
+      <div class="sk"><div class="n">06</div><p>Electromechanical Systems Design</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" aria-label="Selected projects">
+  <div class="work-hdr reveal">
+    <div><div class="slabel">Selected Work</div><h2>Projects</h2></div>
+    <span class="wct">2020 — 2026</span>
+  </div>
+  <div class="filters reveal" role="group" aria-label="Filter projects by category">
+    <button class="filter-btn active" data-cat="all">All</button>
+    <button class="filter-btn" data-cat="medical">Medical Device</button>
+    <button class="filter-btn" data-cat="mechanical">Mechanical</button>
+    <button class="filter-btn" data-cat="digital">Digital</button>
+    <button class="filter-btn" data-cat="illustration">Illustration</button>
+    <button class="filter-btn" data-cat="operations">Operations</button>
+  </div>
+
+  <!-- 01 GI Surgical Actuator -->
+  <div class="project-row reveal" data-cats="medical mechanical" onclick="toggleDetail(this)">
+    <div class="pr-inner">
+      <span class="pr-num" aria-hidden="true">01</span>
+      <!-- FIX: explicit width/height prevents layout shift -->
+      <img class="pr-thumb" src="gi-assy.png" alt="GI Surgical Actuator CAD assembly" width="112" height="80" loading="lazy" decoding="async" />
+      <div class="pr-info">
+        <span class="pr-title">Endoscopic GI Surgical Actuator — Med Device</span>
+        <span class="pr-desc">Novel steerable actuator for endoscopic GI surgery, developed with UNC Hospital's Advanced Endoscopy Fellowship. Concept through working prototype, documented to FDA and ISO standards over three years.</span>
+        <div class="pr-tags"><span class="tag">Medical Device</span><span class="tag">ISO 13485</span><span class="tag">Shape-Memory Alloy</span><span class="tag">Prototyping</span><span class="tag">Greenlight Guru</span></div>
+      </div>
+      <span class="pr-arrow" aria-hidden="true">↗</span>
+    </div>
+    <div class="pr-detail">
+      <div class="pr-detail-inner">
+        <div class="pr-detail-text">
+          <h3>Endoscopic GI Surgical Actuator</h3>
+          <p>Working alongside Dr. Todd Baron and Dr. Lisa Gangarosa at UNC Hospital's Advanced Endoscopy Fellowship, our team identified a clinical need: existing endoscopic tools create post-surgical complications that a redesigned actuator geometry could reduce. I led a team of eight through three years of design, prototyping, and verification — beginning with OR shadowing to understand the procedure environment firsthand.</p>
+          <p>The design process ran from clinical needs-statement development through ideation sketches — specifying PTFE sleeves, titanium construction, ø2mm working channel geometry, and shape-memory alloy actuation rings — to full parametric CAD and a working proof-of-concept prototype with embedded electronics and an OLED UI displaying power level, machine history, and current position.</p>
+          <p>All product, manufacturing, testing, and labeling documentation was developed in accordance with ISO 13485, 21 CFR 8xx, and IEC 60601-1, managed throughout in Greenlight Guru QMS. Prototype fabricated across UNC's fabrication facilities using available in-house methods.</p>
+        </div>
+        <div class="pr-detail-imgs">
+          <img src="gi-assy.png"   alt="Final assembly CAD render" width="800" height="450" loading="lazy" decoding="async" />
+          <img src="gi-or.jpg"    alt="Dr. Todd Baron performing an ERCP procedure at UNC Advanced Endoscopy Fellowship" width="400" height="300" loading="lazy" decoding="async" />
+          <img src="gi-sketch.png" alt="Ideation sketches showing actuator geometry and anatomical context" width="400" height="300" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 CNC Shielding -->
+  <div class="project-row reveal" data-cats="mechanical operations" onclick="toggleDetail(this)">
+    <div class="pr-inner">
+      <span class="pr-num" aria-hidden="true">02</span>
+      <img class="pr-thumb" src="IMG_5677-1024x768.jpg" alt="Finished acrylic CNC safety shield" width="112" height="80" loading="lazy" decoding="async" />
+      <div class="pr-info">
+        <span class="pr-title">CNC Shielding — Wegstr PCB Mill</span>
+        <span class="pr-desc">Custom acrylic enclosure designed &amp; fabricated for a department PCB mill. Illustrator layout, DCM solvent bonding, 3D-printed clamp fixtures.</span>
+        <div class="pr-tags"><span class="tag">Mechanical</span><span class="tag">Acrylic Fab</span><span class="tag">PCB</span><span class="tag">Operations</span></div>
+      </div>
+      <span class="pr-arrow" aria-hidden="true">↗</span>
+    </div>
+    <div class="pr-detail">
+      <div class="pr-detail-inner">
+        <div class="pr-detail-text">
+          <h3>Acrylic Safety Shield for Wegstr CNC</h3>
+          <p>The department's PCB mill had an exposed cutting tool and produced fiberglass dust — a hazard that made it underused. I designed a custom acrylic enclosure that solved both problems while giving the machine a professional finish.</p>
+          <p>Measurements went straight into Adobe Illustrator. Panels were cut from 12×24in stock, bent with a strip heater, and bonded with DCM solvent. 1/8" sheet metal rivets — preferred over clamps — held alignment during the cure. Motor recesses were cut by hand with an expo marker and jeweler's saw.</p>
+          <p>While at the laser, I also made a dedicated tool holder with the standard Cut2D CAM workflow order. PCB process: Tinkercad → Fusion 360 → DXF → Cut2D → mill → microscope → solder → conformal coat.</p>
+        </div>
+        <div class="pr-detail-imgs">
+          <img src="IMG_5677-1024x768.jpg"       alt="Finished acrylic shield installed on Wegstr PCB mill" width="800" height="450" loading="lazy" decoding="async" />
+          <img src="IMG_5634-768x1024-heic.avif"  alt="Strip heater bending process for acrylic panels" width="400" height="300" loading="lazy" decoding="async" />
+          <img src="IMG_5685-1024x768-heic.avif"  alt="Completed shield glamour shot" width="400" height="300" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 Album Illustration -->
+  <div class="project-row reveal" data-cats="illustration" onclick="toggleDetail(this)">
+    <div class="pr-inner">
+      <span class="pr-num" aria-hidden="true">03</span>
+      <img class="pr-thumb" src="Scan_20260117-64-1024x1024.avif" alt="Commissioned album cover illustration" width="112" height="80" loading="lazy" decoding="async" />
+      <div class="pr-info">
+        <span class="pr-title">Album Illustration — Commission</span>
+        <span class="pr-desc">Album cover for Jose "MoneyBag$" Rios. Mexican heritage meets rap culture. Alcohol marker, micron pen, gel pen &amp; colored pencil on 11×14in paper. Shown at "Pancakes &amp; Booze."</span>
+        <div class="pr-tags"><span class="tag">Illustration</span><span class="tag">Commission</span><span class="tag">Traditional Media</span></div>
+      </div>
+      <span class="pr-arrow" aria-hidden="true">↗</span>
+    </div>
+    <div class="pr-detail">
+      <div class="pr-detail-inner">
+        <div class="pr-detail-text">
+          <h3>Album Cover Commission</h3>
+          <p>Jose "MoneyBag$" Rios commissioned an album cover for his first single. He's a native of Mexico City and wanted to honor his heritage while celebrating contemporary rap culture — a brief calling for rich cultural imagery fused with modern energy.</p>
+          <p>The process ran from inspiration research through ideation sketches to final execution in alcohol marker, micron pen, gel pen, and colored pencil on 11×14in paper. The finished piece was exhibited at the "Pancakes &amp; Booze" pop-up art show.</p>
+        </div>
+        <div class="pr-detail-imgs">
+          <img src="RIOS_Apple_Cover-1024x1024.avif"   alt="Final album cover for Jose MoneyBag$ Rios" width="800" height="800" loading="lazy" decoding="async" />
+          <img src="20230111_171125083_iOS-1.jpg"        alt="Early ideation sketches for album cover" width="400" height="300" loading="lazy" decoding="async" />
+          <img src="Scan_20260117-64-1024x1024.avif"    alt="High-resolution scan of finished illustration" width="400" height="400" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 3D Printing Queue -->
+  <div class="project-row reveal" data-cats="digital operations" onclick="toggleDetail(this)">
+    <div class="pr-inner">
+      <span class="pr-num" aria-hidden="true">04</span>
+      <img class="pr-thumb" src="IMG_1007-scaled.avif" alt="DakBoard calendar display in 3D print lab" width="112" height="80" loading="lazy" decoding="async" />
+      <div class="pr-info">
+        <span class="pr-title">3D Printing Queue — UNC BME</span>
+        <span class="pr-desc">Department-wide print management system: Google Forms → App Script → Calendar → DakBoard on Raspberry Pi. Took machine tracking from 0% to 40%+.</span>
+        <div class="pr-tags"><span class="tag">Digital</span><span class="tag">Operations</span><span class="tag">Raspberry Pi</span><span class="tag">Google Apps</span></div>
+      </div>
+      <span class="pr-arrow" aria-hidden="true">↗</span>
+    </div>
+    <div class="pr-detail">
+      <div class="pr-detail-inner">
+        <div class="pr-detail-text">
+          <h3>3D Print Queue Management System</h3>
+          <p>The UNC BME Fabrication Lab had high demand and zero visibility — two Ultimakers, two Formlabs, a Stratasys, and no tracking. The result was deadline-night chaos (literally rock-paper-scissors at 2am before capstone presentations).</p>
+          <p>I built a Google Form capturing contact info, machine, material, and print timing. App Script converts responses into Google Calendar events. A 42in NEC display running DakBoard on a Raspberry Pi Zero 2W puts the live calendar front-and-center in the print area, with the department's Flickr feed as a rotating background.</p>
+          <p>Three years of data now feed filament preference graphs, machine usage stats, and reimbursable lab tracking. Print tracking went from 0% to 30–40% within two semesters.</p>
+        </div>
+        <div class="pr-detail-imgs">
+          <img src="IMG_0947.jpg"              alt="42-inch DakBoard display installed in UNC BME print lab" width="800" height="450" loading="lazy" decoding="async" />
+          <img src="Calendar-1024x525.avif"    alt="Google Calendar queue view on DakBoard" width="400" height="206" loading="lazy" decoding="async" />
+          <img src="Machine-Stats-1024x355.avif" alt="Machine usage statistics dashboard" width="400" height="139" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 Z-axis Override -->
+  <div class="project-row reveal" data-cats="mechanical" onclick="toggleDetail(this)">
+    <div class="pr-inner">
+      <span class="pr-num" aria-hidden="true">05</span>
+      <img class="pr-thumb" src="IMG_1113-768x1024.avif" alt="Brass leadscrew adapter for z-axis manual override" width="112" height="80" loading="lazy" decoding="async" />
+      <div class="pr-info">
+        <span class="pr-title">Z-axis Manual Override — Universal Laser</span>
+        <span class="pr-desc">Brass leadscrew adapter machined on lathe and mill to manually raise a seized $50k laser cutter bed. Grub screws, spring pin, and a salvaged knob.</span>
+        <div class="pr-tags"><span class="tag">Mechanical</span><span class="tag">Lathe</span><span class="tag">Mill</span><span class="tag">Brass</span></div>
+      </div>
+      <span class="pr-arrow" aria-hidden="true">↗</span>
+    </div>
+    <div class="pr-detail">
+      <div class="pr-detail-inner">
+        <div class="pr-detail-text">
+          <h3>Emergency Z-axis Manual Override</h3>
+          <p>The Universal Laser's Z-axis is notoriously problematic — three leadscrews in plastic nuts, driven by a single NEMA 23, with an unprotected serpentine belt. When the bed froze at its lowest position with the belt needing re-synchronization, the situation was a classic chicken-and-egg: can't raise the bed without fixing the belt; can't fix the belt without raising the bed.</p>
+          <p>Solution: machine a brass adapter from 5/8" round bar stock to extend a leadscrew through the sheet metal frame, accepting a salvaged knob. Four grub screws and a slotted spring pin handle torque. Drilling the access hole at angle into a $50k machine with marginal tooling was, per the write-up, "the third sketchiest part of the week."</p>
+          <p>The fix worked. The knob now lives as a permanent emergency maintenance tool — drop it in, raise the bed, pull it out.</p>
+        </div>
+        <div class="pr-detail-imgs">
+          <img src="IMG_1121-1024x768.avif"  alt="Manual override adapter installed in laser cutter frame" width="800" height="450" loading="lazy" decoding="async" />
+          <img src="IMG_1113-768x1024.avif"  alt="Finished brass leadscrew adapter part" width="400" height="533" loading="lazy" decoding="async" />
+          <img src="IMG_1109-768x1024.avif"  alt="Machining the brass adapter on the lathe" width="400" height="533" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv" aria-label="Curriculum Vitae">
+  <div class="reveal">
+    <div class="slabel">Curriculum Vitae</div>
+    <h2>Experience &amp;<br><em>Credentials.</em></h2>
+    <p>
+      A full record of my academic background, industry experience, publications, and technical certifications — available as a downloadable PDF.
+    </p>
+    <!-- FIX: rel="noopener" for security; added aria-label for screen readers -->
+    <a href="cv.pdf" class="cv-btn" download aria-label="Download J.D. Sharp CV as PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      Download CV — PDF
+    </a>
+  </div>
+  <div class="cv-mock reveal">
+    <!-- FIX: loading="lazy" defers the heavy PDF iframe until it's near the viewport -->
+    <iframe src="cv.pdf" class="cv-iframe" title="J.D. Sharp CV Preview" loading="lazy"></iframe>
+    <div class="cv-mock-lbl" aria-hidden="true">CV Preview</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" aria-label="Contact">
+  <div class="contact-ghost" aria-hidden="true">Hello.</div>
+  <div class="slabel">Contact</div>
+  <h2>Let's work<br><em>together.</em></h2>
+  <p>Open to freelance, consulting, and full-time engineering opportunities.</p>
+  <a href="mailto:jd@jdsharp.org" class="contact-email">jd@jdsharp.org</a>
+  <ul class="contact-social">
+    <!-- FIX: rel="noopener noreferrer" on all external links (security + SEO) -->
+    <!-- FIX: aria-label so screen readers say "Instagram" not just the text -->
+    <li><a href="https://www.instagram.com/sharpdesigns09/" target="_blank" rel="noopener noreferrer" aria-label="J.D. Sharp on Instagram">Instagram</a></li>
+    <li><a href="https://www.linkedin.com/in/j-d-sharp/"    target="_blank" rel="noopener noreferrer" aria-label="J.D. Sharp on LinkedIn">LinkedIn</a></li>
+    <li><a href="https://www.youtube.com/@sharpdesigns09/playlists" target="_blank" rel="noopener noreferrer" aria-label="J.D. Sharp on YouTube">YouTube</a></li>
+  </ul>
+  <form class="contact-form" onsubmit="handleForm(event)" novalidate>
+    <input type="hidden" name="access_key"  value="83ea4934-5781-41a8-bce9-3802c7b9dc37" />
+    <input type="hidden" name="subject"     value="New message from jdsharp.org" />
+    <input type="hidden" name="from_name"   value="JD Sharp Portfolio" />
+    <div class="form-row">
+      <input  type="text"  class="ff" name="name"         placeholder="Name"    required autocomplete="name" />
+      <input  type="email" class="ff" name="email"        placeholder="Email"   required autocomplete="email" />
+    </div>
+    <input    type="text"  class="ff" name="subject_line" placeholder="Subject" style="display:block;width:100%;margin-bottom:1px;" />
+    <textarea              class="ff" name="message"      placeholder="Message" style="display:block;width:100%;"></textarea>
+    <button type="submit" class="fsub">Send Message →</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="copy">© 1989–2026 Joseph (J.D.) Sharp. All Rights Reserved.</span>
+  <ul class="foot-links">
+    <li><a href="https://www.instagram.com/sharpdesigns09/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a></li>
+    <li><a href="https://www.linkedin.com/in/j-d-sharp/"    target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a></li>
+    <li><a href="https://www.youtube.com/@sharpdesigns09/playlists" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a></li>
+    <li><a href="cv.pdf" download aria-label="Download CV PDF">CV PDF</a></li>
+  </ul>
+</footer>
+
+<script>
+/* ── NAV SCROLL-SPY ── */
+const navLinks = document.querySelectorAll('.nav-links a[data-section]');
+const sections = ['about','work','cv','contact'].map(id=>document.getElementById(id));
+const setActive = id => {
+  navLinks.forEach(a => a.classList.toggle('nav-active', a.dataset.section === id));
+};
+const spyObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) setActive(e.target.id); });
+}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+sections.forEach(s => s && spyObs.observe(s));
+
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function tick(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(tick);})();
+document.querySelectorAll('a,button,.project-row').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.2)';curR.style.width='50px';curR.style.height='50px';curR.style.borderColor='rgba(75,156,211,.55)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.width='30px';curR.style.height='30px';curR.style.borderColor='rgba(75,156,211,.35)';});
+});
+
+/* ── SCROLL REVEALS ── */
+const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*55);obs.unobserve(e.target);}});},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── PROJECT EXPAND ── */
+function toggleDetail(row){
+  const d=row.querySelector('.pr-detail');
+  const open=d.classList.contains('open');
+  document.querySelectorAll('.pr-detail.open').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.pr-arrow').forEach(a=>a.style.transform='');
+  if(!open){
+    d.classList.add('open');
+    row.querySelector('.pr-arrow').style.transform='rotate(45deg)';
+    setTimeout(()=>row.scrollIntoView({behavior:'smooth',block:'start'}),100);
+  }
+}
+
+/* ── FILTERS ── */
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat=btn.dataset.cat;
+    document.querySelectorAll('.project-row').forEach(row=>{
+      row.style.display=(cat==='all'||row.dataset.cats.includes(cat))?'':'none';
+    });
+    document.querySelectorAll('.pr-detail.open').forEach(d=>d.classList.remove('open'));
+  });
+});
+
+/* ── FORM ── */
+async function handleForm(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.fsub');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  try {
+    const data = Object.fromEntries(new FormData(form));
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const json = await res.json();
+    if (json.success) {
+      btn.textContent = 'Sent ✓';
+      btn.style.borderColor = 'var(--accent2)';
+      btn.style.color = 'var(--accent2)';
+      form.reset();
+      setTimeout(() => {
+        btn.textContent = 'Send Message →';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+        btn.disabled = false;
+      }, 3000);
+    } else {
+      throw new Error(json.message);
+    }
+  } catch(err) {
+    btn.textContent = 'Error — try emailing directly';
+    btn.style.borderColor = '#e05';
+    btn.style.color = '#e05';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>

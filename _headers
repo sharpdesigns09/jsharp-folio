@@ -1,0 +1,41 @@
+# ═══════════════════════════════════════════════════════════════
+# Cloudflare Pages — _headers
+# Place this file in your repository ROOT (same level as index.html)
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+# ═══════════════════════════════════════════════════════════════
+
+# ── GLOBAL SECURITY HEADERS (all routes) ─────────────────────
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-XSS-Protection: 1; mode=block
+
+# ── HTML — no cache (always fresh on deploy) ─────────────────
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# ── IMAGES — long-lived cache (filenames are content-addressed) ─
+# AVIF files (already optimal format — max cache)
+/*.avif
+  Cache-Control: public, max-age=31536000, immutable
+
+# JPEG files
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+# PNG files
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+# ── PDF — moderate cache (CV may be updated periodically) ────
+/*.pdf
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# ── FONTS (if you ever self-host them) ───────────────────────
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
