@@ -40,6 +40,9 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
+<!-- Cloudflare Turnstile -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <!-- ═══════════════════════════════════════════════════════════
      PERFORMANCE — GOOGLE FONTS (non-blocking async load)
      Using the media/onload trick keeps fonts from blocking FCP.
@@ -335,6 +338,74 @@ footer { border-top:1px solid var(--border); padding:1.75rem var(--gutter); disp
   #cur, #curR { display:none; }
   a, button, .project-row, .filter-btn, .contact-email { cursor:pointer; }
 }
+
+/* ── CV GATE MODAL ────────────────────────────────────────── */
+.cv-gate-overlay {
+  position:fixed; inset:0; z-index:9000;
+  background:rgba(12,12,12,.88);
+  backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  padding:1.5rem;
+  opacity:0; pointer-events:none;
+  transition:opacity .3s cubic-bezier(.16,1,.3,1);
+}
+.cv-gate-overlay.open { opacity:1; pointer-events:all; }
+.cv-gate-box {
+  background:var(--surface);
+  border:1px solid var(--border);
+  max-width:480px; width:100%;
+  padding:clamp(2rem,5vw,3rem);
+  position:relative;
+  transform:translateY(18px);
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.cv-gate-overlay.open .cv-gate-box { transform:translateY(0); }
+.cv-gate-close {
+  position:absolute; top:1.25rem; right:1.25rem;
+  background:none; border:none; color:var(--dim);
+  font-size:1.1rem; cursor:none; padding:.25rem;
+  line-height:1; transition:color .2s;
+}
+.cv-gate-close:hover { color:var(--text); }
+.cv-gate-eyebrow {
+  font-family:var(--mono); font-size:.72rem;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:1.25rem;
+  display:flex; align-items:center; gap:.75rem;
+}
+.cv-gate-eyebrow::before {
+  content:''; width:1.5rem; height:1px;
+  background:var(--accent); display:block;
+}
+.cv-gate-box h3 {
+  font-family:var(--serif); font-size:clamp(1.5rem,3vw,2rem);
+  font-weight:400; color:var(--white); line-height:1.1;
+  margin-bottom:.6rem;
+}
+.cv-gate-box p {
+  font-size:.93rem; color:var(--mid);
+  line-height:1.7; margin-bottom:1.75rem;
+}
+.cv-gate-fields { display:flex; flex-direction:column; gap:1px; margin-bottom:1.25rem; }
+.cv-gate-turnstile { margin-bottom:1.25rem; }
+.cv-gate-submit {
+  width:100%; background:transparent;
+  border:1px solid var(--accent); color:var(--accent);
+  font-family:var(--mono); font-size:.75rem;
+  letter-spacing:.15em; text-transform:uppercase;
+  padding:1rem; cursor:none;
+  transition:background .2s,color .2s;
+}
+.cv-gate-submit:hover:not(:disabled) { background:var(--accent); color:var(--bg); }
+.cv-gate-submit:disabled { opacity:.5; }
+.cv-gate-note {
+  font-family:var(--mono); font-size:.65rem;
+  color:var(--dim); text-align:center;
+  margin-top:.9rem; letter-spacing:.06em;
+}
+@media(hover:none){
+  .cv-gate-close, .cv-gate-submit { cursor:pointer; }
+}
 </style>
 </head>
 <body>
@@ -566,11 +637,10 @@ footer { border-top:1px solid var(--border); padding:1.75rem var(--gutter); disp
     <p>
       A full record of my academic background, industry experience, publications, and technical certifications — available as a downloadable PDF.
     </p>
-    <!-- FIX: rel="noopener" for security; added aria-label for screen readers -->
-    <a href="cv.pdf" class="cv-btn" download aria-label="Download J.D. Sharp CV as PDF">
+    <button onclick="openCvGate()" class="cv-btn" aria-label="Download J.D. Sharp CV as PDF">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       Download CV — PDF
-    </a>
+    </button>
   </div>
   <div class="cv-mock reveal">
     <!-- FIX: loading="lazy" defers the heavy PDF iframe until it's near the viewport -->
@@ -618,7 +688,114 @@ footer { border-top:1px solid var(--border); padding:1.75rem var(--gutter); disp
   </ul>
 </footer>
 
+<!-- CV GATE MODAL -->
+<div class="cv-gate-overlay" id="cvGate" role="dialog" aria-modal="true" aria-labelledby="cvGateTitle">
+  <div class="cv-gate-box">
+    <button class="cv-gate-close" onclick="closeCvGate()" aria-label="Close">✕</button>
+    <div class="cv-gate-eyebrow">Curriculum Vitae</div>
+    <h3 id="cvGateTitle">One quick step<br>to download.</h3>
+    <p>Leave your name and email and the PDF downloads instantly. Your info stays with me — just a designer who might follow up.</p>
+    <form id="cvGateForm" onsubmit="submitCvGate(event)" novalidate>
+      <input type="hidden" name="access_key"  value="83ea4934-5781-41a8-bce9-3802c7b9dc37" />
+      <input type="hidden" name="subject"     value="CV Download — jdsharp.org" />
+      <input type="hidden" name="from_name"   value="JD Sharp Portfolio — CV Gate" />
+      <div class="cv-gate-fields">
+        <input type="text"  class="ff" name="name"  placeholder="Your Name"          required autocomplete="name" />
+        <input type="email" class="ff" name="email" placeholder="Your Email Address"  required autocomplete="email" />
+      </div>
+      <div class="cv-gate-turnstile">
+        <div class="cf-turnstile"
+             data-sitekey="0x4AAAAAADJkYYuKIpY_E_o9"
+             data-theme="dark"
+             data-size="flexible">
+        </div>
+      </div>
+      <button type="submit" class="cv-gate-submit" id="cvGateBtn">Download CV — PDF →</button>
+      <p class="cv-gate-note">No lists, no newsletters.</p>
+    </form>
+  </div>
+</div>
+
 <script>
+/* ── CV GATE ── */
+function openCvGate() {
+  document.getElementById('cvGate').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  const btn = document.getElementById('cvGateBtn');
+  btn.textContent = 'Download CV — PDF →';
+  btn.style.borderColor = '';
+  btn.style.color = '';
+  btn.disabled = false;
+}
+function closeCvGate() {
+  document.getElementById('cvGate').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('cvGate').addEventListener('click', function(e) {
+  if (e.target === this) closeCvGate();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCvGate();
+});
+async function submitCvGate(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn  = document.getElementById('cvGateBtn');
+  const tsResponse = form.querySelector('[name="cf-turnstile-response"]');
+  if (!tsResponse || !tsResponse.value) {
+    btn.textContent = 'Please complete the captcha';
+    btn.style.borderColor = '#e05';
+    btn.style.color = '#e05';
+    setTimeout(() => {
+      btn.textContent = 'Download CV — PDF →';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }, 2500);
+    return;
+  }
+  btn.textContent = 'Verifying…';
+  btn.disabled = true;
+  try {
+    const data = Object.fromEntries(new FormData(form));
+    data.message = `CV downloaded at ${new Date().toUTCString()}`;
+    const res  = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const json = await res.json();
+    if (json.success) {
+      btn.textContent = 'Downloading…';
+      btn.style.borderColor = 'var(--accent2)';
+      btn.style.color = 'var(--accent2)';
+      const link = document.createElement('a');
+      link.href = 'cv.pdf';
+      link.download = 'JD-Sharp-CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => {
+        closeCvGate();
+        form.reset();
+        if (window.turnstile) turnstile.reset();
+      }, 1200);
+    } else {
+      throw new Error(json.message);
+    }
+  } catch(err) {
+    btn.textContent = 'Error — try emailing me directly';
+    btn.style.borderColor = '#e05';
+    btn.style.color = '#e05';
+    btn.disabled = false;
+  }
+}
+// Intercept footer CV link
+document.querySelector('a[href="cv.pdf"][download]')
+  ?.addEventListener('click', function(e) {
+    e.preventDefault();
+    openCvGate();
+  });
+
 /* ── NAV SCROLL-SPY ── */
 const navLinks = document.querySelectorAll('.nav-links a[data-section]');
 const sections = ['about','work','cv','contact'].map(id=>document.getElementById(id));
