@@ -52,31 +52,6 @@
 <link rel="preload" href="/fonts/playfair-display-latin-400-italic.woff2"  as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/ibm-plex-mono-latin-400-normal.woff2"     as="font" type="font/woff2" crossorigin />
 
-<!-- Font failsafe — fires AFTER window load so @font-face rules are
-     fully parsed and self-hosted fonts have had time to load.
-     Only injects Google Fonts if a font is genuinely missing. -->
-<script>
-(function() {
-  var GFONTS = 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap';
-  function loadGoogleFonts() {
-    if (document.querySelector('link[href*="fonts.googleapis.com"]')) return;
-    var l = document.createElement('link');
-    l.rel = 'stylesheet'; l.href = GFONTS;
-    document.head.appendChild(l);
-  }
-  window.addEventListener('load', function() {
-    // Extra 500ms buffer after load — fonts used on-screen will be ready by now
-    setTimeout(function() {
-      if (!document.fonts.check('400 1em "Playfair Display"') ||
-          !document.fonts.check('400 1em "IBM Plex Mono"')   ||
-          !document.fonts.check('300 1em "IBM Plex Sans"')) {
-        loadGoogleFonts();
-      }
-    }, 500);
-  });
-})();
-</script>
-
 <!-- ═══════════════════════════════════════════════════════════
      STRUCTURED DATA — Person (JSON-LD)
      Helps Google surface your name, role, and links in rich results.
