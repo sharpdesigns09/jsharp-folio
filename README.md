@@ -160,11 +160,11 @@ The complete JHU da Vinci Research Kit (dVRK) ecosystem — robot controllers, F
 </details>
 
 <details>
-<summary><strong>3D Printing & Digital Fabrication</strong> (~25 repos)</summary>
+<summary><strong>Advanced Manufacturing & Digital Fabrication</strong> (~25 repos)</summary>
 
-Marlin and Klipper firmware, multi-material toolchanger systems (StealthChanger), resin slicer tools (UVtools, uv3dp), 5-axis printing (Open5x, Gen5X), print monitoring (PrintWatch), STL texturing, NanoDLP documentation, and printer hardware references including Ender-3 and SKR-Pico.
+5-axis additive manufacturing (Open5x, Gen5X), robotic toolchanging systems (StealthChanger), CANbus-networked printer architectures, remote monitoring and print analytics (PrintWatch), resin process control (UVtools, uv3dp, NanoDLP), multi-material extrusion, STL mesh texturing, and open hardware printer platforms (Ender-3, SKR-Pico). Applicable directly to bioprinting scaffolds, patient-specific implant fabrication, and ISO 13485-compliant additive manufacturing workflows.
 
-*Directly supports: FDM/SLA/SLS expertise, Fab Lab curriculum development, and DFM consulting.*
+*Applied to: DFM curriculum development, Fab Lab infrastructure, clinical prototype fabrication, and advanced manufacturing process design.*
 
 </details>
 
@@ -178,11 +178,11 @@ KiCad and Eagle libraries (JLCPCB), ESP32/ESP-IDF development framework, CAN bus
 </details>
 
 <details>
-<summary><strong>FPV Drones & RC Systems</strong> (~15 repos)</summary>
+<summary><strong>Motion Control, Embedded Systems & Robotics</strong> (~15 repos)</summary>
 
-ArduPilot flight controller stack, ELRS long-range radio systems, BLHeli ESC firmware, open-source racing frames (Typhon, OpenRacer), FPV race timing (RotorHazard), RC joystick-to-ELRS bridges, and Betaflight/Klipper crossover tooling.
+FOC BLDC motor control (BLHeli, SimpleFOC), ArduPilot and ELRS for advanced PID tuning and long-range telemetry, quaternion mathematics and dual 9-DOF IMU sensor fusion, open-source racing frame structures for carbon fiber DFM study, and RC joystick-to-embedded-control bridging.
 
-*Directly supports: UNC Drone Club founding, cinematic drone filming, and embedded RC electronics work.*
+*Applied to: electromechanical actuator design, stepper and servo motion systems, embedded control loops, and real-time sensor fusion in medical and industrial devices.*
 
 </details>
 
@@ -196,11 +196,11 @@ MONAI AI toolkit for healthcare imaging, TotalSegmentator and MRISegmentator for
 </details>
 
 <details>
-<summary><strong>AI, LLM & Generative Tooling</strong> (~30 repos)</summary>
+<summary><strong>Physical AI & Intelligent Systems</strong> (~30 repos)</summary>
 
-NVIDIA RAG blueprints and NemoClaw inference, LightRAG and RAG-Anything retrieval frameworks, AnythingLLM local productivity stack, ComfyUI and video diffusion models (HunyuanVideo, Wan2GP, LTX-Video), Ollama local model runner, model merging tools (mergekit), AI training toolkit (ai-toolkit), and MCP server collections.
+NVIDIA RAG blueprints, NemoClaw and ToolOrchestra agentic inference frameworks, LightRAG and RAG-Anything retrieval pipelines, AnythingLLM local deployment, ComfyUI and video diffusion models (HunyuanVideo, Wan2GP), Ollama local model runner, model merging (mergekit), vision-language models (moondream), and MCP server ecosystems. Studied in the context of embedding intelligence directly into physical devices and manufacturing workflows — predictive diagnostics, computer vision quality control, agentic process automation, and AI-assisted regulatory documentation.
 
-*Directly supports: IBM RAG and Agentic AI Professional certification (in progress) and AI-augmented engineering workflows.*
+*Applied to: next-generation medical device intelligence, AI-augmented DFM, and autonomous biomedical manufacturing systems.*
 
 </details>
 
