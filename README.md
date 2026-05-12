@@ -146,6 +146,68 @@ Fabrication Lab Manager · UNC Chapel Hill Biomedical Engineering
 
 ---
 
+## Reference Library
+
+231 forked repositories organized by discipline — used as a personal research library and technical reference across active areas of practice.
+
+<details>
+<summary><strong>Surgical Robotics & Medical Devices</strong> (~40 repos)</summary>
+
+The complete JHU da Vinci Research Kit (dVRK) ecosystem — robot controllers, FPGA firmware, PCB designs, ROS integration, force sensors, XR/mixed reality extensions, and reinforcement learning environments. Also includes NVIDIA's Isaac for Healthcare simulation stack, Holoscan sensor bridge, CISST libraries, and AMBF surgical simulation framework.
+
+*Directly supports: Endoscopic GI Surgical Actuator capstone, regulatory documentation work, and clinical device translation.*
+
+</details>
+
+<details>
+<summary><strong>3D Printing & Digital Fabrication</strong> (~25 repos)</summary>
+
+Marlin and Klipper firmware, multi-material toolchanger systems (StealthChanger), resin slicer tools (UVtools, uv3dp), 5-axis printing (Open5x, Gen5X), print monitoring (PrintWatch), STL texturing, NanoDLP documentation, and printer hardware references including Ender-3 and SKR-Pico.
+
+*Directly supports: FDM/SLA/SLS expertise, Fab Lab curriculum development, and DFM consulting.*
+
+</details>
+
+<details>
+<summary><strong>PCB Design & Embedded Electronics</strong> (~20 repos)</summary>
+
+KiCad and Eagle libraries (JLCPCB), ESP32/ESP-IDF development framework, CAN bus analyzers (cangaroo, candleLight), e-paper display modules, pick-and-place feeder firmware (photon), PCB standards (Viagrid), SparkFun sensor references, smart haptic input (smartknob), and multi-channel EL drivers.
+
+*Directly supports: PCB fabrication teaching module, CNC shielding project, and electromechanical systems design.*
+
+</details>
+
+<details>
+<summary><strong>FPV Drones & RC Systems</strong> (~15 repos)</summary>
+
+ArduPilot flight controller stack, ELRS long-range radio systems, BLHeli ESC firmware, open-source racing frames (Typhon, OpenRacer), FPV race timing (RotorHazard), RC joystick-to-ELRS bridges, and Betaflight/Klipper crossover tooling.
+
+*Directly supports: UNC Drone Club founding, cinematic drone filming, and embedded RC electronics work.*
+
+</details>
+
+<details>
+<summary><strong>Biomedical AI & Clinical Imaging</strong> (~20 repos)</summary>
+
+MONAI AI toolkit for healthcare imaging, TotalSegmentator and MRISegmentator for anatomical CT/MR segmentation, CRISPR-GPT LLM agent, Android FHIR SDK, HL7 FHIR point-of-care device standards, PDF 21 CFR Part 11 compliance validator, microfluidics design tools (3DuF, OpenMicrofluidics), NIR spectroscopy (reremeter), and CO2 incubator hardware.
+
+*Directly supports: Regulatory strategy expertise, FDA/ISO documentation work, and biomedical device translation.*
+
+</details>
+
+<details>
+<summary><strong>AI, LLM & Generative Tooling</strong> (~30 repos)</summary>
+
+NVIDIA RAG blueprints and NemoClaw inference, LightRAG and RAG-Anything retrieval frameworks, AnythingLLM local productivity stack, ComfyUI and video diffusion models (HunyuanVideo, Wan2GP, LTX-Video), Ollama local model runner, model merging tools (mergekit), AI training toolkit (ai-toolkit), and MCP server collections.
+
+*Directly supports: IBM RAG and Agentic AI Professional certification (in progress) and AI-augmented engineering workflows.*
+
+</details>
+
+---
+
+
+
 <div align="center">
 <sub>© 1989–2026 Joseph D. Sharp · All Rights Reserved</sub>
 </div>
