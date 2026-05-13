@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Reference Library — J.D. Sharp | Biomedical Engineering & Physical AI</title>
+<meta name="description" content="An annotated reference library of 484 curated videos and 231 repositories spanning medical device design, surgical robotics, Physical AI, and precision manufacturing. Assembled by J.D. Sharp as a domain research corpus and fabrication curriculum resource." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://jdsharp.org/library" />
+
+<meta property="og:type"        content="website" />
+<meta property="og:url"         content="https://jdsharp.org/library" />
+<meta property="og:title"       content="Reference Library — J.D. Sharp" />
+<meta property="og:description" content="484 curated videos and 231 repositories spanning medical device design, surgical robotics, Physical AI, and precision manufacturing." />
+<meta property="og:image"       content="https://jdsharp.org/gi-assy.png" />
+<meta property="og:site_name"   content="J.D. Sharp Portfolio" />
+
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Reference Library — J.D. Sharp" />
+<meta name="twitter:description" content="484 curated videos and 231 repositories spanning medical device design, surgical robotics, Physical AI, and precision manufacturing." />
+
+<link rel="icon"            href="/favicon.ico" sizes="any" />
+<link rel="icon"            href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Reference Library — J.D. Sharp",
+  "description": "Annotated bibliography of 484 curated videos and 231 repositories spanning biomedical engineering, Physical AI, and precision manufacturing.",
+  "url": "https://jdsharp.org/library",
+  "author": {
+    "@type": "Person",
+    "name": "J.D. Sharp",
+    "url": "https://jdsharp.org"
+  },
+  "about": [
+    "Medical Device Design",
+    "Surgical Robotics",
+    "Physical AI",
+    "Precision Manufacturing",
+    "ISO 13485",
+    "Biomedical Engineering"
+  ]
+}
+</script>
+
+<!-- Self-hosted fonts -->
+<link rel="preload" href="/fonts/playfair-display-latin-400-normal.woff2"  as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/playfair-display-latin-400-italic.woff2"  as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/ibm-plex-mono-latin-400-normal.woff2"     as="font" type="font/woff2" crossorigin />
+
+<style>
+/* ── TOKENS (match portfolio) ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+@font-face {
+  font-family: 'Playfair Display'; font-style: normal; font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/playfair-display-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display'; font-style: italic; font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/playfair-display-latin-400-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display'; font-style: normal; font-weight: 700;
+  font-display: optional;
+  src: url('/fonts/playfair-display-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-latin-300-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans'; font-style: normal; font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-sans-latin-300-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans'; font-style: normal; font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-sans-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans'; font-style: normal; font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-sans-latin-500-normal.woff2') format('woff2');
+}
+
+:root {
+  --bg:      #0c0c0c;
+  --surface: #141414;
+  --border:  #2a2a2a;
+  --muted:   #444;
+  --dim:     #999;
+  --mid:     #aaa;
+  --text:    #ede9e3;
+  --accent:  #6AAFE0;
+  --accent2: #93C8EA;
+  --white:   #f5f1eb;
+  --serif:   'Playfair Display', Georgia, serif;
+  --mono:    'IBM Plex Mono', monospace;
+  --sans:    'IBM Plex Sans', system-ui, sans-serif;
+  --gutter:  clamp(1.5rem, 5vw, 5rem);
+  --content: 72ch;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 500;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.4rem var(--gutter);
+  background: rgba(12,12,12,.97);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--mono); font-size: .8rem;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--text); text-decoration: none;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: .75rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--mid); text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover, .nav-links a[aria-current] { color: var(--accent); }
+
+/* ── HERO ────────────────────────────────────────────────── */
+.lib-hero {
+  padding: 5rem var(--gutter) 3.5rem;
+  border-bottom: 1px solid var(--border);
+  max-width: calc(var(--content) + var(--gutter) * 2);
+}
+.lib-eyebrow {
+  font-family: var(--mono); font-size: .76rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--accent);
+  display: flex; align-items: center; gap: .9rem;
+  margin-bottom: 1.75rem;
+}
+.lib-eyebrow::before { content: ''; width: 2rem; height: 1px; background: var(--accent); display: block; }
+.lib-hero h1 {
+  font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400; line-height: 1.05; color: var(--white);
+  margin-bottom: 1.5rem;
+}
+.lib-hero h1 em { font-style: italic; color: var(--accent); }
+.lib-hero .intro {
+  font-size: 1rem; color: var(--mid); line-height: 1.9;
+  max-width: 60ch; margin-bottom: 2rem;
+}
+.lib-stats {
+  display: flex; gap: 3rem; flex-wrap: wrap;
+}
+.lib-stat { }
+.lib-stat .num {
+  font-family: var(--serif); font-size: 2rem;
+  font-weight: 400; color: var(--white); display: block;
+  line-height: 1;
+}
+.lib-stat .label {
+  font-family: var(--mono); font-size: .7rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--dim); display: block;
+  margin-top: .3rem;
+}
+
+/* ── LAYOUT ──────────────────────────────────────────────── */
+.lib-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 0;
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── TOC SIDEBAR ─────────────────────────────────────────── */
+.lib-toc {
+  position: sticky; top: 57px;
+  padding: 3rem 2rem 3rem var(--gutter);
+  border-right: 1px solid var(--border);
+  min-height: calc(100vh - 57px);
+}
+.lib-toc h2 {
+  font-family: var(--mono); font-size: .68rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 1.5rem;
+}
+.lib-toc ol {
+  list-style: none;
+  display: flex; flex-direction: column; gap: .1rem;
+  counter-reset: toc;
+}
+.lib-toc li { counter-increment: toc; }
+.lib-toc a {
+  font-family: var(--mono); font-size: .7rem;
+  letter-spacing: .06em; color: var(--dim);
+  text-decoration: none; line-height: 1.6;
+  display: flex; gap: .6rem; align-items: baseline;
+  transition: color .2s; padding: .3rem 0;
+}
+.lib-toc a::before {
+  content: counter(toc, decimal-leading-zero);
+  color: var(--muted); flex-shrink: 0;
+}
+.lib-toc a:hover,
+.lib-toc a.active { color: var(--accent); }
+.lib-toc a.active::before { color: var(--accent); }
+
+/* ── MAIN CONTENT ────────────────────────────────────────── */
+.lib-content {
+  padding: 0 var(--gutter);
+}
+
+/* ── SECTION ─────────────────────────────────────────────── */
+.lib-section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.lib-section:last-child { border-bottom: none; }
+
+.section-header {
+  margin-bottom: 2.5rem;
+}
+.section-num {
+  font-family: var(--mono); font-size: .7rem;
+  letter-spacing: .2em; color: var(--accent);
+  display: block; margin-bottom: .5rem;
+}
+.lib-section h2 {
+  font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+  font-weight: 400; color: var(--white); line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+.lib-section h2 em { font-style: italic; color: var(--accent); }
+.section-context {
+  font-size: .97rem; color: var(--mid);
+  line-height: 1.9; max-width: 68ch;
+  border-left: 2px solid var(--border);
+  padding-left: 1.5rem;
+}
+
+/* ── HERO SOURCE LINKS ───────────────────────────────────── */
+.lib-sources {
+  display: flex; gap: 1.25rem; align-items: center;
+  margin-top: 2.25rem; flex-wrap: wrap;
+}
+.lib-source-link {
+  display: flex; align-items: center; gap: .7rem;
+  text-decoration: none;
+  padding: .65rem 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color .2s, background .2s;
+}
+.lib-source-link:hover { border-color: var(--accent); background: var(--surface2); }
+.lib-source-link svg { flex-shrink: 0; }
+.lib-source-link .src-label {
+  font-family: var(--mono); font-size: .72rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--mid); transition: color .2s;
+}
+.lib-source-link:hover .src-label { color: var(--accent); }
+.lib-source-link .src-count {
+  font-family: var(--mono); font-size: .65rem;
+  color: var(--dim); letter-spacing: .08em;
+  margin-left: .25rem;
+}
+.lib-sub {
+  margin-top: 2.75rem;
+}
+.lib-sub h3 {
+  font-family: var(--mono); font-size: .76rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--accent);
+  display: flex; align-items: center; gap: .9rem;
+  margin-bottom: 1.75rem;
+}
+.lib-sub h3::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* ── YOUTUBE FACADE ──────────────────────────────────────── */
+.yt-featured {
+  margin-bottom: 2rem;
+}
+.yt-facade {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  overflow: hidden;
+  max-width: 680px;
+}
+.yt-facade img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(.85);
+  transition: filter .3s;
+  display: block;
+}
+.yt-facade:hover img { filter: brightness(1); }
+.yt-facade iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+.yt-play {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: none; cursor: pointer;
+}
+.yt-play-btn {
+  width: 64px; height: 64px;
+  background: rgba(255,0,0,.9);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s, background .2s;
+}
+.yt-facade:hover .yt-play-btn {
+  transform: scale(1.08);
+  background: #ff0000;
+}
+.yt-play-btn svg { width: 28px; height: 28px; fill: white; }
+
+/* Placeholder for videos where we need the ID updated */
+.yt-placeholder {
+  aspect-ratio: 16/9;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1rem; max-width: 680px;
+  text-align: center; padding: 2rem;
+}
+.yt-placeholder .ph-title {
+  font-family: var(--serif); font-size: 1.1rem;
+  color: var(--white); font-style: italic;
+}
+.yt-placeholder .ph-note {
+  font-family: var(--mono); font-size: .68rem;
+  letter-spacing: .1em; color: var(--dim);
+}
+.yt-placeholder a {
+  font-family: var(--mono); font-size: .72rem;
+  color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: .1rem;
+}
+
+/* ── VIDEO LIST ──────────────────────────────────────────── */
+.video-list {
+  list-style: none;
+  display: flex; flex-direction: column;
+  gap: 0;
+  max-width: 680px;
+}
+.video-item {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: .75rem;
+  padding: .9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.video-item:last-child { border-bottom: none; }
+.video-idx {
+  font-family: var(--mono); font-size: .65rem;
+  color: var(--muted); padding-top: .2rem;
+  letter-spacing: .08em;
+}
+.video-info {}
+.video-title {
+  font-family: var(--sans); font-size: .95rem; font-weight: 400;
+  color: var(--white);
+  text-decoration: none;
+  display: block; margin-bottom: .25rem;
+  transition: color .2s;
+}
+.video-title:hover { color: var(--accent); }
+.video-note {
+  font-size: .88rem; color: var(--dim);
+  line-height: 1.65;
+}
+
+/* ── REPO LIST ───────────────────────────────────────────── */
+.repo-list {
+  list-style: none;
+  display: flex; flex-direction: column;
+  gap: 0;
+  max-width: 680px;
+}
+.repo-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.repo-item:last-child { border-bottom: none; }
+.repo-info {}
+.repo-name {
+  font-family: var(--mono); font-size: .85rem; font-weight: 400;
+  color: var(--accent); text-decoration: none;
+  display: block; margin-bottom: .3rem;
+  transition: color .2s;
+}
+.repo-name:hover { color: var(--white); }
+.repo-origin {
+  font-family: var(--mono); font-size: .68rem;
+  color: var(--muted); letter-spacing: .06em;
+  display: block; margin-bottom: .4rem;
+}
+.repo-note {
+  font-size: .9rem; color: var(--dim); line-height: 1.65;
+}
+.repo-lang {
+  font-family: var(--mono); font-size: .65rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--dim); border: 1px solid var(--muted);
+  padding: .2rem .6rem; border-radius: 100px;
+  white-space: nowrap; align-self: start; margin-top: .1rem;
+}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.75rem var(--gutter);
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.copy {
+  font-family: var(--mono); font-size: .68rem;
+  letter-spacing: .1em; color: var(--dim);
+}
+.foot-links { display: flex; gap: 1.75rem; list-style: none; }
+.foot-links a {
+  font-family: var(--mono); font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--dim); text-decoration: none; transition: color .2s;
+}
+.foot-links a:hover { color: var(--accent); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .lib-body { grid-template-columns: 1fr; }
+  .lib-toc {
+    position: static; min-height: auto;
+    border-right: none; border-bottom: 1px solid var(--border);
+    padding: 2rem var(--gutter);
+  }
+  .lib-toc ol {
+    flex-direction: row; flex-wrap: wrap; gap: .5rem;
+  }
+  .lib-toc a { font-size: .68rem; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-logo">J<span>.</span>Sharp<span> /</span> BME</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/#cv">CV</a></li>
+    <li><a href="/library" aria-current="page">Library</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="lib-hero">
+  <div class="lib-eyebrow">Reference Library</div>
+  <h1>Domain research in<br><em>biomedical engineering</em><br>and Physical AI.</h1>
+  <p class="intro">
+    An annotated bibliography of primary references assembled across fifteen years of engineering practice —
+    spanning medical device design, surgical robotics, Physical AI, and precision manufacturing.
+    Organized as a living research corpus and fabrication curriculum resource.
+  </p>
+  <div class="lib-stats">
+    <div class="lib-stat">
+      <span class="num">484</span>
+      <span class="label">Curated Videos</span>
+    </div>
+    <div class="lib-stat">
+      <span class="num">231</span>
+      <span class="label">Repositories</span>
+    </div>
+    <div class="lib-stat">
+      <span class="num">1.05M</span>
+      <span class="label">Transcript Words</span>
+    </div>
+    <div class="lib-stat">
+      <span class="num">18</span>
+      <span class="label">Technical Clusters</span>
+    </div>
+  </div>
+
+  <div class="lib-sources">
+    <!-- YouTube -->
+    <a class="lib-source-link"
+       href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Open BME playlist on YouTube">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+          fill="#FF0000"/>
+      </svg>
+      <span class="src-label">YouTube Playlist</span>
+      <span class="src-count">484 videos</span>
+    </a>
+
+    <!-- GitHub -->
+    <a class="lib-source-link"
+       href="https://github.com/sharpdesigns09?tab=repositories"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Open repositories on GitHub">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+          fill="var(--accent)"/>
+      </svg>
+      <span class="src-label">GitHub Repositories</span>
+      <span class="src-count">231 repos</span>
+    </a>
+  </div>
+</header>
+
+<div class="lib-body">
+
+  <!-- TOC SIDEBAR -->
+  <nav class="lib-toc" aria-label="Section navigation">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#surgical-robotics">Surgical Robotics &amp; Medical Devices</a></li>
+      <li><a href="#physical-ai-robotics">Physical AI, Robotics &amp; Simulation</a></li>
+      <li><a href="#advanced-manufacturing">Advanced Manufacturing &amp; Digital Fabrication</a></li>
+      <li><a href="#pcb-embedded">PCB Design &amp; Embedded Systems</a></li>
+      <li><a href="#materials-machining">Materials, Finishing &amp; Precision Machining</a></li>
+      <li><a href="#intelligent-systems">Agentic AI &amp; Intelligent Systems</a></li>
+    </ol>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="lib-content">
+
+    <!-- ══ 01 SURGICAL ROBOTICS ══════════════════════════════ -->
+    <section class="lib-section" id="surgical-robotics">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>Surgical Robotics &amp;<br><em>Medical Devices</em></h2>
+        <p class="section-context">
+          This cluster anchors the intersection of regulatory engineering and clinical device translation.
+          Resources range from clean room aseptic manufacturing standards to the full JHU da Vinci Research Kit
+          software ecosystem. The emphasis is on understanding the complete device lifecycle — from clinical
+          needs identification through OR shadowing, prototype verification, and ISO 13485 design control.
+          Selected for direct application to electromechanical actuator design, implantable device
+          architecture, and AI-assisted surgical systems.
+        </p>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Video Resources</h3>
+        <div class="yt-featured">
+          <!-- Featured embed: Environmental Monitoring (EM) — video ID: AnpbGZllaaE -->
+          <div class="yt-facade" data-vid="AnpbGZllaaE" role="button" tabindex="0"
+               aria-label="Play: Environmental Monitoring (EM)">
+            <img src="https://i.ytimg.com/vi/AnpbGZllaaE/maxresdefault.jpg"
+                 alt="Environmental Monitoring in Pharmaceutical Manufacturing"
+                 width="680" height="383" loading="eager" decoding="async" />
+            <div class="yt-play" aria-hidden="true">
+              <div class="yt-play-btn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="video-list">
+          <li class="video-item">
+            <span class="video-idx">02</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/watch?v=AnpbGZllaaE&list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Environmental Monitoring (EM)</a>
+              <p class="video-note">Pharmaceutical manufacturing environmental monitoring protocols. Directly applicable to clean room qualification and ISO 13485 process validation requirements.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">03</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Discover Aseptic Fill-Finish — A Critical Step in Parenteral Manufacturing</a>
+              <p class="video-note">Sterile fill-finish operations for parenteral drug products. Reference for understanding regulated manufacturing environments and contamination control strategies.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">05</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Clean Room Gowning Process</a>
+              <p class="video-note">Gowning procedure for ISO Class cleanrooms. Procedural reference for design teams developing devices intended for sterile manufacturing environments.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">155</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Building a Surgery Robot in My Apartment</a>
+              <p class="video-note">A first-principles surgical robot build outside an institutional setting. Documents the gap between theoretical kinematics and practical electromechanical implementation.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">188</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Rechargeable Medical Devices and Their Design Considerations</a>
+              <p class="video-note">Battery chemistry selection, inductive charging architectures, and regulatory constraints for implantable and wearable medical devices. Essential reference for Class II and III device design.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">369</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">CT or MRI to 3D Print — DICOM to STL</a>
+              <p class="video-note">Patient imaging to manufacturable geometry pipeline. Reference for anatomically-derived implant design, surgical planning tools, and medical 3D printing workflows.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Repository References</h3>
+        <ul class="repo-list">
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/sawIntuitiveResearchKit"
+                 target="_blank" rel="noopener noreferrer">sawIntuitiveResearchKit</a>
+              <span class="repo-origin">↗ jhu-dvrk / sawIntuitiveResearchKit</span>
+              <p class="repo-note">The complete cisst/SAW software stack for the da Vinci Research Kit (dVRK). Covers kinematic control, ROS integration, teleoperation, and haptic feedback for surgical robotics research. Primary reference for the GI Surgical Actuator capstone.</p>
+            </div>
+            <span class="repo-lang">C++</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/i4h-workflows"
+                 target="_blank" rel="noopener noreferrer">i4h-workflows</a>
+              <span class="repo-origin">↗ isaac-for-healthcare / i4h-workflows</span>
+              <p class="repo-note">NVIDIA Isaac for Healthcare reference workflows. Bridges sim-to-real transfer for medical robotics — surgical instrument tracking, OR environment simulation, and AI-driven clinical workflow automation.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/MONAI"
+                 target="_blank" rel="noopener noreferrer">MONAI</a>
+              <span class="repo-origin">↗ Project-MONAI / MONAI</span>
+              <p class="repo-note">PyTorch-based AI toolkit purpose-built for healthcare imaging. Covers segmentation, classification, detection, and registration across CT, MRI, and pathology modalities. Reference for integrating imaging intelligence into device design pipelines.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/cisst"
+                 target="_blank" rel="noopener noreferrer">cisst</a>
+              <span class="repo-origin">↗ jhu-cisst / cisst</span>
+              <p class="repo-note">Johns Hopkins ERC CISST Library — component framework underlying all dVRK software. Provides real-time data collection, state machines, and multi-threaded component architecture for surgical robotics systems.</p>
+            </div>
+            <span class="repo-lang">C++</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/pdf-compliance-validator"
+                 target="_blank" rel="noopener noreferrer">pdf-compliance-validator</a>
+              <span class="repo-origin">↗ tusha-p / pdf-compliance-validator</span>
+              <p class="repo-note">Open-source tool for flagging potential 21 CFR Part 11 issues in PDFs. Validates audit trail completeness, timestamp formatting (ISO 8601), and signature requirements. Reference for QMS document validation and regulatory submission preparation.</p>
+            </div>
+            <span class="repo-lang">Java</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/ambf"
+                 target="_blank" rel="noopener noreferrer">ambf</a>
+              <span class="repo-origin">↗ WPI-AIM / ambf</span>
+              <p class="repo-note">Asynchronous Multi-Body Framework for surgical simulation. Enables real-time physics simulation of deformable tissues and rigid surgical instruments. Used as a reference for pre-clinical actuator testing environments.</p>
+            </div>
+            <span class="repo-lang">C++</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ 02 PHYSICAL AI ════════════════════════════════════ -->
+    <section class="lib-section" id="physical-ai-robotics">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Physical AI, Robotics<br>&amp; <em>Simulation</em></h2>
+        <p class="section-context">
+          Physical AI — as distinct from language or generative AI — refers to intelligence embedded directly
+          into physical systems: robots, manufacturing equipment, and medical devices that perceive, decide,
+          and act. This cluster covers the simulation infrastructure (NVIDIA Isaac), sensor fusion pipelines,
+          3D scene understanding, and reinforcement learning frameworks that underpin next-generation
+          autonomous manufacturing and surgical systems. Selected for their direct applicability to
+          intelligent fabrication, computer vision quality control, and AI-driven clinical translation.
+        </p>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Video Resources</h3>
+        <div class="yt-featured">
+          <!-- TODO: Replace VIDEO_ID_008 with actual ID from file 008-[ID].info.json -->
+          <div class="yt-placeholder">
+            <div class="yt-play-btn" style="margin-bottom:.5rem">
+              <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="ph-title">Isaac Sim &amp; Isaac Lab: Full Guide to Building &amp; Training Robots</span>
+            <span class="ph-note"><!-- UPDATE: check 008-*.info.json for video ID, then replace this placeholder with yt-facade --></span>
+            <a href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+               target="_blank" rel="noopener noreferrer">Watch in playlist ↗</a>
+          </div>
+        </div>
+        <ul class="video-list">
+          <li class="video-item">
+            <span class="video-idx">08</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Isaac Sim &amp; Isaac Lab: Full Guide to Building &amp; Training Robots</a>
+              <p class="video-note">End-to-end walkthrough of NVIDIA's robotics simulation stack. Covers scene authoring in OpenUSD, domain randomization, sim-to-real transfer, and reinforcement learning policy training in photorealistic environments.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">09</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">I Tried to Build a Robot Like Boston Dynamics With Isaac Sim</a>
+              <p class="video-note">Practical implementation of legged locomotion using Isaac Sim. Documents the gap between theoretical kinematics and simulation-trained behavior — directly relevant to actuator design validation.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">10</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">VISTA-2D: Foundation Model for Cell Imaging Segmentation</a>
+              <p class="video-note">NVIDIA's universal 2D cell segmentation model. Reference for applying vision foundation models to histopathology, fluorescence microscopy, and point-of-care diagnostic imaging pipelines.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">11</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">MAISI: High-Quality Synthetic CT Generation Model</a>
+              <p class="video-note">Generative model for synthetic CT data augmentation. Critical reference for training medical imaging models where real patient data is scarce or restricted under HIPAA.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">139</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Machine Learning for 3D</a>
+              <p class="video-note">Applying ML to 3D geometry: point clouds, mesh processing, and implicit surface representations. Reference for AI-assisted DFM, topology optimization, and geometry-aware manufacturing planning.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Repository References</h3>
+        <ul class="repo-list">
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/IsaacSim"
+                 target="_blank" rel="noopener noreferrer">IsaacSim</a>
+              <span class="repo-origin">↗ isaac-sim / IsaacSim</span>
+              <p class="repo-note">NVIDIA Isaac Sim — open-source robotics simulation on Omniverse. Photorealistic rendering, physics, and sensor simulation for developing and testing AI-driven robots. Primary reference for Physical AI manufacturing system development.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/ToolOrchestra"
+                 target="_blank" rel="noopener noreferrer">ToolOrchestra</a>
+              <span class="repo-origin">↗ NVlabs / ToolOrchestra</span>
+              <p class="repo-note">End-to-end RL training framework for orchestrating tools and agentic workflows. Reference for designing AI systems that coordinate multiple manufacturing processes and decision agents.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/vomp"
+                 target="_blank" rel="noopener noreferrer">vomp</a>
+              <span class="repo-origin">↗ nv-tlabs / VoMP</span>
+              <p class="repo-note">Predicting volumetric mechanical property fields from geometry alone. Directly applicable to AI-assisted material property estimation in medical device design and FEA preprocessing.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/FAST_LIO"
+                 target="_blank" rel="noopener noreferrer">FAST_LIO</a>
+              <span class="repo-origin">↗ hku-mars / FAST_LIO</span>
+              <p class="repo-note">Computationally efficient LiDAR-inertial odometry for robotic navigation in complex environments. Reference for sensor fusion in surgical robot localization and autonomous manufacturing cell navigation.</p>
+            </div>
+            <span class="repo-lang">C++</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/pycuvslam"
+                 target="_blank" rel="noopener noreferrer">pycuvslam</a>
+              <span class="repo-origin">↗ nvidia-isaac / cuVSLAM</span>
+              <p class="repo-note">NVIDIA's GPU-accelerated visual SLAM system. High-accuracy simultaneous localization and mapping for robots operating in unstructured clinical and manufacturing environments.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ 03 ADVANCED MANUFACTURING ════════════════════════ -->
+    <section class="lib-section" id="advanced-manufacturing">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Advanced Manufacturing &amp;<br><em>Digital Fabrication</em></h2>
+        <p class="section-context">
+          The largest cluster in the library, reflecting the breadth of fabrication methods required
+          to translate a clinical need into a manufacturable device. Covers injection mold design
+          (gates, ejectors, cooling, multi-cavity), five-axis additive manufacturing, robotic
+          toolchanging, resin process control, and vacuum forming. Resources are selected for their
+          direct applicability to ISO 13485-compliant prototype fabrication, DFM curriculum development,
+          and the specific manufacturing methods used in the UNC BME Fabrication Lab and consulting practice.
+        </p>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Video Resources</h3>
+        <div class="yt-featured">
+          <!-- TODO: Replace VIDEO_ID_178 with actual ID from file 178-[ID].info.json -->
+          <div class="yt-placeholder">
+            <div class="yt-play-btn" style="margin-bottom:.5rem">
+              <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="ph-title">INSANE Multi-Cavity Molds to Make Millions of Plastic Parts</span>
+            <span class="ph-note"><!-- UPDATE: check 178-*.info.json --></span>
+            <a href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+               target="_blank" rel="noopener noreferrer">Watch in playlist ↗</a>
+          </div>
+        </div>
+        <ul class="video-list">
+          <li class="video-item">
+            <span class="video-idx">19</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">3D Printing Clips — Design Hacks for Stronger Prints</a>
+              <p class="video-note">Practical DFM guidelines for FDM additive manufacturing. Covers layer orientation, snap-fit geometry, and print-in-place constraints directly applicable to functional prototype design.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">35</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Fantastic Plastic 13 — Shut Offs — SolidWorks Tutorial</a>
+              <p class="video-note">Mold shut-off surface design in SolidWorks. Core reference for understanding how parting line geometry affects mold complexity, tool cost, and part quality in injection-molded device components.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">52</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Importance of Water Flow in Injection Molding</a>
+              <p class="video-note">Thermal analysis of conformal cooling channel design. Reference for mold cycle time reduction and warpage prevention in high-tolerance medical device components.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">456</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Thin Wall High Fidelity Silicone Parts with FormLabs Form 4</a>
+              <p class="video-note">Silicone casting from SLA-printed molds using the Form 4. Reference for producing biocompatible soft-tissue-interfacing device components with complex geometries not achievable through traditional tooling.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">361</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Prototype to Production — How Microcontrollers Are Programmed at Scale</a>
+              <p class="video-note">Manufacturing scale-up for embedded electronics — from bench prototype to contract manufacturer. Covers programming jigs, test fixtures, and production validation protocols relevant to FDA 21 CFR Part 820 manufacturing requirements.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Repository References</h3>
+        <ul class="repo-list">
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/StealthChanger"
+                 target="_blank" rel="noopener noreferrer">StealthChanger</a>
+              <span class="repo-origin">↗ DraftShift / StealthChanger</span>
+              <p class="repo-note">Open-source robotic toolchanging system for Voron-architecture printers. Reference for CAN-bus-networked multi-material and multi-process fabrication cells — directly applicable to automated bioprinting and multi-material device fabrication.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/Open5x"
+                 target="_blank" rel="noopener noreferrer">Open5x</a>
+              <span class="repo-origin">↗ FreddieHong19 / Open5x</span>
+              <p class="repo-note">Open-source 5-axis 3D printing hardware and software. Reference for continuous fiber orientation control in structural medical device components and patient-specific implant geometries that cannot be fabricated with 3-axis systems.</p>
+            </div>
+            <span class="repo-lang">GAP</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/Marlin"
+                 target="_blank" rel="noopener noreferrer">Marlin</a>
+              <span class="repo-origin">↗ MarlinFirmware / Marlin</span>
+              <p class="repo-note">The dominant open-source firmware for FDM 3D printers. Reference for understanding low-level motion control, G-code execution, and temperature management in fabrication equipment used throughout the lab.</p>
+            </div>
+            <span class="repo-lang">C++</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/UVtools"
+                 target="_blank" rel="noopener noreferrer">UVtools</a>
+              <span class="repo-origin">↗ sn4k3 / UVtools</span>
+              <p class="repo-note">MSLA/DLP resin 3D printer file analysis, calibration, repair, and manipulation toolkit. Reference for optimizing resin print parameters for biocompatible resins used in microfluidic device and dental device fabrication.</p>
+            </div>
+            <span class="repo-lang">C#</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/stlTexturizer"
+                 target="_blank" rel="noopener noreferrer">stlTexturizer</a>
+              <span class="repo-origin">↗ CNCKitchen / stlTexturizer</span>
+              <p class="repo-note">Bump-mesh 3D model texture engine for applying surface textures to STL geometry. Reference for osseointegration surface design on orthopedic implants and grip-texture features on handheld surgical instruments.</p>
+            </div>
+            <span class="repo-lang">JavaScript</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ 04 PCB & EMBEDDED ══════════════════════════════════ -->
+    <section class="lib-section" id="pcb-embedded">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>PCB Design &amp;<br><em>Embedded Systems</em></h2>
+        <p class="section-context">
+          Electromechanical device design requires fluency at every level of the electronics stack —
+          from schematic capture and PCB layout through firmware, real-time control loops, and
+          communications protocols. This cluster covers KiCad and Eagle PCB workflows, CAN bus
+          and RS485 industrial protocols, FOC BLDC motor control, PID tuning, dual 9-DOF IMU
+          sensor fusion with quaternion mathematics, and the ESP32/STM32 ecosystems that underpin
+          the lab's embedded electronics curriculum and device prototyping practice.
+        </p>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Video Resources</h3>
+        <div class="yt-featured">
+          <!-- TODO: Replace VIDEO_ID_088 with actual ID from file 088-[ID].info.json -->
+          <div class="yt-placeholder">
+            <div class="yt-play-btn" style="margin-bottom:.5rem">
+              <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="ph-title">Every Hardware Protocol Explained in 6 Minutes</span>
+            <span class="ph-note"><!-- UPDATE: check 088-*.info.json --></span>
+            <a href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+               target="_blank" rel="noopener noreferrer">Watch in playlist ↗</a>
+          </div>
+        </div>
+        <ul class="video-list">
+          <li class="video-item">
+            <span class="video-idx">23</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Metallization of Vias — CAN Bus Indicator Using STM32</a>
+              <p class="video-note">Via metallization for multilayer PCBs and STM32-based CAN bus implementation. Direct reference for the PCB fabrication teaching module and embedded communications design in medical device prototypes.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">47</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Beyond UART: RS485</a>
+              <p class="video-note">RS485 differential signaling for multi-drop industrial networks. Reference for long-cable embedded systems in medical equipment and manufacturing environments where EMI noise immunity is required.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">97</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">How Drone ESCs Work</a>
+              <p class="video-note">FOC (Field-Oriented Control) BLDC motor control theory and ESC architecture. Foundation reference for understanding torque ripple, back-EMF, and the control mathematics underlying electromechanical actuators in surgical and industrial devices.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">117</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">ESP32 Guide 2026</a>
+              <p class="video-note">Comprehensive current-state ESP32 ecosystem reference — covering ESP-IDF, Arduino framework, Bluetooth, Wi-Fi, power management, and OTA update strategies for connected medical and industrial devices.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">124</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">How to Order Assembled PCB Boards Using KiCad</a>
+              <p class="video-note">End-to-end KiCad to JLCPCB PCBA workflow. Reference for the PCB fabrication curriculum and for transitioning device prototypes from breadboard to assembled PCB within an ISO 13485 design history file.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Repository References</h3>
+        <ul class="repo-list">
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/esp-idf"
+                 target="_blank" rel="noopener noreferrer">esp-idf</a>
+              <span class="repo-origin">↗ espressif / esp-idf</span>
+              <p class="repo-note">Official Espressif IoT Development Framework. The production-grade alternative to the Arduino abstraction layer for ESP32 devices requiring deterministic timing, custom RTOS task management, or IEC 60601-compliant power behavior.</p>
+            </div>
+            <span class="repo-lang">C</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/candleLight_fw"
+                 target="_blank" rel="noopener noreferrer">candleLight_fw</a>
+              <span class="repo-origin">↗ candle-usb / candleLight_fw</span>
+              <p class="repo-note">gs_usb-compatible firmware for USB-to-CAN adapters. Reference for CAN bus development tooling — used alongside cangaroo for monitoring and debugging CAN networks in multi-axis electromechanical device prototypes.</p>
+            </div>
+            <span class="repo-lang">C</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/smartknob"
+                 target="_blank" rel="noopener noreferrer">smartknob</a>
+              <span class="repo-origin">↗ scottbez1 / smartknob</span>
+              <p class="repo-note">Haptic input knob with software-defined endstops and virtual detents using FOC motor control. Reference for surgical instrument tactile feedback design and configurable haptic UI in medical device control panels.</p>
+            </div>
+            <span class="repo-lang">C++</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/BLHeli"
+                 target="_blank" rel="noopener noreferrer">BLHeli</a>
+              <span class="repo-origin">↗ bitdump / BLHeli</span>
+              <p class="repo-note">Open-source ESC firmware implementing FOC BLDC control. Primary reference for understanding motor commutation, quaternion-based orientation tracking, and the PID control loop mathematics underlying motion control in electromechanical devices.</p>
+            </div>
+            <span class="repo-lang">Assembly</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/photon"
+                 target="_blank" rel="noopener noreferrer">photon</a>
+              <span class="repo-origin">↗ photonfirmware / photon</span>
+              <p class="repo-note">Open-source firmware for automated pick-and-place feeders. Reference for the lab's SMT assembly workflow and for understanding how industrial feeder hardware integrates with automated PCB assembly systems.</p>
+            </div>
+            <span class="repo-lang">C++</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ 05 MATERIALS & MACHINING ══════════════════════════ -->
+    <section class="lib-section" id="materials-machining">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Materials, Finishing &amp;<br><em>Precision Machining</em></h2>
+        <p class="section-context">
+          Material selection is a regulatory and clinical decision as much as an engineering one.
+          This cluster covers the engineering polymers central to medical device design (PEEK, PPS,
+          PTFE, biocompatible silicone), surface treatment processes (anodizing, cerakote, vapor
+          polishing, electroplating), and the precision machining methods required to achieve
+          tolerance-critical geometries. Resources include GD&amp;T application, tolerance stack-up,
+          wire EDM, Swiss machining, and metrological techniques — all selected in the context of
+          manufacturing components that must perform reliably in clinical environments.
+        </p>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Video Resources</h3>
+        <div class="yt-featured">
+          <!-- TODO: Replace VIDEO_ID_142 with actual ID from file 142-[ID].info.json -->
+          <div class="yt-placeholder">
+            <div class="yt-play-btn" style="margin-bottom:.5rem">
+              <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="ph-title">How PEEK Changed Engineering Forever</span>
+            <span class="ph-note"><!-- UPDATE: check 142-*.info.json --></span>
+            <a href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+               target="_blank" rel="noopener noreferrer">Watch in playlist ↗</a>
+          </div>
+        </div>
+        <ul class="video-list">
+          <li class="video-item">
+            <span class="video-idx">111</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Engineering Drawings: How to Make Prints a Machinist Will Love</a>
+              <p class="video-note">GD&amp;T and engineering drawing best practices for manufacturing communication. Direct curriculum reference for the ASME Y14.5 content delivered in UNC BME Junior Design fabrication sections.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">151</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">How Wire EDM Works</a>
+              <p class="video-note">Wire EDM principles, kerf compensation, and surface finish capabilities. Reference for understanding when EDM is the appropriate manufacturing method for high-hardness, complex-profile medical device tooling and components.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">159</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Silicone Explained</a>
+              <p class="video-note">Comprehensive reference on silicone elastomer chemistry, shore hardness, tear strength, biocompatibility, and processing methods. Essential for selecting silicone grades for wearable sensors, implantable seals, and soft-tissue-contacting device components.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">165</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Why Scratching Metal Creates Extreme Precision</a>
+              <p class="video-note">The mechanics of precision surface generation through lapping and scraping. Reference for understanding how machine tool accuracy is established and maintained — foundational context for metrology in device manufacturing environments.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">186</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Engineering Plastics for R&amp;D</a>
+              <p class="video-note">Selection guide for engineering thermoplastics in research and development contexts — comparing machinability, chemical resistance, sterilizability, and regulatory status. Reference for material selection rationale in design history files.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Repository References</h3>
+        <ul class="repo-list">
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/micromanipulatorstepper"
+                 target="_blank" rel="noopener noreferrer">micromanipulatorstepper</a>
+              <span class="repo-origin">↗ 0x23 / MicroManipulatorStepper</span>
+              <p class="repo-note">Sub-micrometer 3D motion control platform. Reference for precision positioning system design in surgical robotics, optogenetics rigs, and any device requiring nanometer-scale displacement resolution and repeatability.</p>
+            </div>
+            <span class="repo-lang">C++</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/tubular-linear-motor"
+                 target="_blank" rel="noopener noreferrer">tubular-linear-motor</a>
+              <span class="repo-origin">↗ stijnsprojects / tubular-linear-motor</span>
+              <p class="repo-note">Open-source tubular linear synchronous motor (LSM) design. Reference for understanding direct-drive linear actuation — relevant to surgical tool actuation, biopsy needle drives, and other medical devices requiring force-transparent linear motion.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/gcode-cmm"
+                 target="_blank" rel="noopener noreferrer">gcode-cmm</a>
+              <span class="repo-origin">↗ XDGFX / gcode-cmm</span>
+              <p class="repo-note">Adapts a USB-controllable 3D printer into a coordinate measuring machine (CMM). Reference for low-cost in-process measurement in a fabrication lab context — used to validate geometric tolerances on printed fixtures and jigs.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/reremeter"
+                 target="_blank" rel="noopener noreferrer">reremeter</a>
+              <span class="repo-origin">↗ arminstr / reremeter</span>
+              <p class="repo-note">Low-cost handheld NIR reflectance spectroscopy system for plastic type identification. Reference for non-destructive material verification in incoming inspection workflows — relevant to polymer identification in device component receiving.</p>
+            </div>
+            <span class="repo-lang">C</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ 06 PHYSICAL AI & INTELLIGENT SYSTEMS ═════════════ -->
+    <section class="lib-section" id="intelligent-systems">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Agentic AI &amp;<br><em>Intelligent Systems</em></h2>
+        <p class="section-context">
+          This cluster addresses the infrastructure for embedding AI into physical engineering workflows —
+          not as an interface layer, but as a functional component of the manufacturing and design system
+          itself. Covers retrieval-augmented generation (RAG) architectures, local large language model
+          deployment, agentic workflow orchestration, and multimodal vision-language models. Resources
+          are selected specifically for their applicability to AI-assisted regulatory documentation,
+          intelligent process automation in fabrication environments, and the design of Physical AI
+          systems for medical device manufacturing.
+        </p>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Video Resources</h3>
+        <div class="yt-featured">
+          <!-- TODO: Replace VIDEO_ID_027 with actual ID from file 027-[ID].info.json -->
+          <div class="yt-placeholder">
+            <div class="yt-play-btn" style="margin-bottom:.5rem">
+              <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="ph-title">The 7 Levels of Claude Code &amp; RAG</span>
+            <span class="ph-note"><!-- UPDATE: check 027-*.info.json --></span>
+            <a href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+               target="_blank" rel="noopener noreferrer">Watch in playlist ↗</a>
+          </div>
+        </div>
+        <ul class="video-list">
+          <li class="video-item">
+            <span class="video-idx">27</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">The 7 Levels of Claude Code &amp; RAG</a>
+              <p class="video-note">Progressive RAG architecture from basic document retrieval to agentic multi-step reasoning. Framework reference for designing AI systems that operate on engineering documentation, regulatory filings, and manufacturing process records.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">28</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">My Full OpenClaw Setup</a>
+              <p class="video-note">Local AI assistant configuration and deployment. Reference for setting up privacy-first, on-device LLM infrastructure suitable for engineering environments handling ITAR-controlled or proprietary device design data.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">33</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">How to Quickly Summarize Requirements — IBM DOORS Next + AI Hub</a>
+              <p class="video-note">AI-assisted requirements management in IBM DOORS Next. Direct reference for applying language models to ISO 13485 design input/output traceability and FDA 21 CFR Part 820 design control documentation.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">17</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Claude Code Best Practices</a>
+              <p class="video-note">Systematic approaches to agentic coding with Claude. Reference for building AI-assisted engineering automation tools — from design script generation to automated test protocol drafting in regulated device development.</p>
+            </div>
+          </li>
+          <li class="video-item">
+            <span class="video-idx">298</span>
+            <div class="video-info">
+              <a class="video-title" href="https://www.youtube.com/playlist?list=PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR"
+                 target="_blank" rel="noopener noreferrer">Python RAG Tutorial (with Local LLMs): AI For Your PDFs</a>
+              <p class="video-note">Practical implementation of document-grounded RAG using local models. Reference for building offline-capable AI systems that operate on design history files, SOPs, and regulatory submissions without sending data to external APIs.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lib-sub">
+        <h3>Repository References</h3>
+        <ul class="repo-list">
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/LightRAG"
+                 target="_blank" rel="noopener noreferrer">LightRAG</a>
+              <span class="repo-origin">↗ HKUDS / LightRAG</span>
+              <p class="repo-note">Fast graph-and-vector RAG pipeline from EMNLP 2025. Reference architecture for building knowledge retrieval systems over engineering corpora — regulatory standards libraries, manufacturing SOPs, and device design documentation.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/RAG-Anything"
+                 target="_blank" rel="noopener noreferrer">RAG-Anything</a>
+              <span class="repo-origin">↗ HKUDS / RAG-Anything</span>
+              <p class="repo-note">All-in-one RAG framework supporting text, images, tables, equations, and mixed-modality documents. Reference for processing the heterogeneous document types that appear in medical device technical files — test reports, engineering drawings, and clinical evaluation reports.</p>
+            </div>
+            <span class="repo-lang">Python</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/anything-llm"
+                 target="_blank" rel="noopener noreferrer">anything-llm</a>
+              <span class="repo-origin">↗ Mintplex-Labs / anything-llm</span>
+              <p class="repo-note">Privacy-first, on-device AI productivity stack with document ingestion, RAG, and multi-LLM support. Evaluated as an on-premises alternative for regulated engineering environments where cloud API usage is restricted by ITAR or confidentiality requirements.</p>
+            </div>
+            <span class="repo-lang">JavaScript</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/NemoClaw"
+                 target="_blank" rel="noopener noreferrer">NemoClaw</a>
+              <span class="repo-origin">↗ NVIDIA / NemoClaw</span>
+              <p class="repo-note">Run OpenClaw inference securely inside NVIDIA OpenShell with managed inference. Reference for deploying AI assistants in air-gapped or restricted-network manufacturing and research environments.</p>
+            </div>
+            <span class="repo-lang">TypeScript</span>
+          </li>
+          <li class="repo-item">
+            <div class="repo-info">
+              <a class="repo-name" href="https://github.com/sharpdesigns09/ollama"
+                 target="_blank" rel="noopener noreferrer">ollama</a>
+              <span class="repo-origin">↗ ollama / ollama</span>
+              <p class="repo-note">Local LLM runtime supporting Llama, DeepSeek, Gemma, and other open models. The foundation layer for offline AI tooling in device development workflows — enabling model inference without external API dependencies or data egress.</p>
+            </div>
+            <span class="repo-lang">Go</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="copy">© 1989–2026 Joseph D. Sharp · All Rights Reserved</span>
+  <ul class="foot-links">
+    <li><a href="/">Portfolio</a></li>
+    <li><a href="https://www.instagram.com/sharpdesigns09/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+    <li><a href="https://www.linkedin.com/in/j-d-sharp/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    <li><a href="https://github.com/sharpdesigns09" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    <li><a href="https://www.youtube.com/@sharpdesigns09/playlists" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+    <li><a href="/#cv" download>CV PDF</a></li>
+  </ul>
+</footer>
+
+<script>
+/* ── LIVE COUNTS ──
+   Fetches playlist video count from YouTube oEmbed (no API key needed)
+   and repo count from GitHub public API.
+   Falls back silently to hardcoded values if either request fails.
+── */
+(async function updateCounts() {
+  // Elements to update
+  const statEls = document.querySelectorAll('.lib-stat');
+  // stats order: Videos, Repos, Transcript Words, Clusters
+  const videoStatEl  = statEls[0]?.querySelector('.num');
+  const repoStatEl   = statEls[1]?.querySelector('.num');
+  const videoCountEl = document.querySelector('.lib-source-link[aria-label*="YouTube"] .src-count');
+  const repoCountEl  = document.querySelector('.lib-source-link[aria-label*="GitHub"] .src-count');
+
+  // ── YouTube playlist count ──
+  // YouTube Data API v3 isn't usable without a key, but we can use
+  // the playlistItems approach via a CORS proxy isn't reliable either.
+  // Best no-auth approach: noembed.com returns playlist metadata.
+  // We store the count locally and update it when we detect a change
+  // by comparing against the hardcoded value via sessionStorage cache.
+  //
+  // For a true live count, add your YouTube Data API key below.
+  const YT_API_KEY    = '';   // optional — add key for live video count
+  const PLAYLIST_ID   = 'PLmEuhUJEeCxunRytNPD5VYJerMbk3b8wR';
+  const GITHUB_USER   = 'sharpdesigns09';
+
+  // ── GitHub repo count (public API, no key needed) ──
+  try {
+    const ghRes  = await fetch(
+      `https://api.github.com/users/${GITHUB_USER}`,
+      { headers: { Accept: 'application/vnd.github.v3+json' } }
+    );
+    if (ghRes.ok) {
+      const ghData = await ghRes.json();
+      const total  = ghData.public_repos;
+      if (total && repoStatEl)  repoStatEl.textContent  = total;
+      if (total && repoCountEl) repoCountEl.textContent = `${total} repos`;
+    }
+  } catch (_) { /* silent fallback */ }
+
+  // ── YouTube count (requires API key if you want live data) ──
+  if (YT_API_KEY) {
+    try {
+      const ytRes = await fetch(
+        `https://www.googleapis.com/youtube/v3/playlists?part=contentDetails&id=${PLAYLIST_ID}&key=${YT_API_KEY}`
+      );
+      if (ytRes.ok) {
+        const ytData = await ytRes.json();
+        const count  = ytData.items?.[0]?.contentDetails?.itemCount;
+        if (count && videoStatEl)  videoStatEl.textContent  = count;
+        if (count && videoCountEl) videoCountEl.textContent = `${count} videos`;
+      }
+    } catch (_) { /* silent fallback */ }
+  }
+})();
+
+document.querySelectorAll('.yt-facade').forEach(el => {
+  el.addEventListener('click', () => {
+    const vid = el.dataset.vid;
+    el.innerHTML = `<iframe
+      src="https://www.youtube.com/embed/${vid}?autoplay=1&rel=0"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>`;
+  });
+  el.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') el.click();
+  });
+});
+
+/* ── TOC ACTIVE STATE ── */
+const sections = document.querySelectorAll('.lib-section');
+const tocLinks = document.querySelectorAll('.lib-toc a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`.lib-toc a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
